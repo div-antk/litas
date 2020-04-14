@@ -11,10 +11,10 @@ use Illuminate\Http\Request;
 class ListingsController extends Controller
 {
     // コンストラクタ。このクラスが呼ばれると最初にこの処理をする
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     public function index()
     {
@@ -22,7 +22,7 @@ class ListingsController extends Controller
             ->orderBy('created_at', 'asc')
             ->get();
 
-            return view('listing/index', ['listings' => $listings]);
+            return view('listings.index', ['listings' => $listings]);
     }
 
     public function new()
