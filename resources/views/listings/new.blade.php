@@ -1,6 +1,7 @@
 @extends('app')
 
 @section('content')
+
 <div class="panel-body">
 
   {{-- バリデーションエラー時 --}}

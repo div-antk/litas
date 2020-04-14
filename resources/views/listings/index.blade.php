@@ -1,5 +1,8 @@
 @extends('app')
+
 @section('content')
+
+@include('nav')
 
 <div class="topPage">
   <div class="listWrapper">
@@ -16,4 +19,5 @@
       @endforeach
   </div>
 </div>
+
 @endsection

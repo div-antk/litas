@@ -10,17 +10,19 @@ use Illuminate\Http\Request;
 
 class ListingsController extends Controller
 {
-    // コンストラクタ。このクラスが呼ばれると最初にこの処理をする
+
     // public function __construct()
     // {
+    //     // ログインしていなかったらログインページに遷移する（この処理を消すとログインしなくてもページを表示する）
     //     $this->middleware('auth');
     // }
 
     public function index()
     {
-        $listings = Listing::where('user_id', Auth::user()->id)
-            ->orderBy('created_at', 'asc')
-            ->get();
+        // $listings = Listing::where('user_id', Auth::user()->id)
+        $listings = Listing::all()->sortByDesc('created_at');
+            // ->orderBy('created_at', 'asc')
+            // ->get();
 
             return view('listings.index', ['listings' => $listings]);
     }
