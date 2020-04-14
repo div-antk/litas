@@ -36,10 +36,10 @@ class RegisterController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('guest');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     /**
      * Get a validator for an incoming registration request.
@@ -47,6 +47,12 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+
+    public function index()
+    {
+        return redirect('/');
+    }
+
     protected function validator(array $data)
     {
         return Validator::make($data, [
