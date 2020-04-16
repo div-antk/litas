@@ -24,57 +24,37 @@
 <div class="container">
   <div class="row">
 
-  <div class="col">
-  <div class="card col-sm-4 p-3">けんさく
-    <div class="card mt-3">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">ライトコース</li>
-        <li class="list-group-item">スタンダードコース</li>
-        <li class="list-group-item">プロフェッショナルコース</li>
-      </ul>
-    </div>
-  </div>
-  </div>
-
-  <div class="card col-sm-4 p-3">やる
-      <div class="card mt-3">
-        <h5 class="card-header">
-          カードのヘッダ
-        </h5>
-        <div class="card-body">
-          <p class="card-text">以下のテキストを追加のコンテンツへの自然な導入としてサポート。</p>
-        </div>
-      </div>
-
-      <div class="card mt-3">
-        <h5 class="card-header">
-          カードのヘッダ
-        </h5>
-        <div class="card-body">
-          <p class="card-text">以下のテキストを追加のコンテンツへの自然な導入としてサポート。</p>
-        </div>
-      </div>
-  </div>
-
-  <div class="card col-sm-4 p-3">やった
-    <div class="card mt-3">
-      <h5 class="card-header">
-        カードのヘッダ
-      </h5>
-      <div class="card-body">
-        <p class="card-text">以下のテキストを追加のコンテンツへの自然な導入としてサポート。</p>
-      </div>
-    </div>
-
-    <div class="card mt-3">
-      <h5 class="card-header">
-        カードのヘッダ
-      </h5>
-      <div class="card-body">
-        <p class="card-text">以下のテキストを追加のコンテンツへの自然な導入としてサポート。</p>
+  <div class="col-sm-4">
+    <div class="card p-3 mt-3 shadow-none bg-light">けんさく
+      <div class="card mt-3 shadow-sm">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">ライトコース</li>
+          <li class="list-group-item">スタンダードコース</li>
+          <li class="list-group-item">プロフェッショナルコース</li>
+        </ul>
       </div>
     </div>
   </div>
+
+  {{-- やることリスト --}}
+
+  <div class="col-sm-4">
+    <div class="card p-3 mt-3 shadow-none bg-light">やる
+      @include('listings.plan_card')
+      @include('listings.plan_card')
+    </div>
+  </div>
+
+  {{-- やったことリスト --}}
+
+  <div class="col-sm-4">
+    <div class="card p-3 mt-3 shadow-none bg-light">やった
+      @include('listings.done_card')
+      @include('listings.done_card')
+      @include('listings.done_card')
+    </div>
+  </div>
+
 
   </div>
 </div>
