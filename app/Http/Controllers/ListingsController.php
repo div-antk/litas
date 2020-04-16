@@ -29,7 +29,7 @@ class ListingsController extends Controller
 
     public function new()
     {
-        return view('listing/new');
+        return view('listings/new');
     }
 
     public function store(Request $request)
