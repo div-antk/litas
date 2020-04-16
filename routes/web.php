@@ -18,7 +18,7 @@ Route::get('/listingsedit/{listing_id}', 'ListingsController@edit');
 Route::post('/listings/edit', 'ListingsController@update');
 
 // リスト削除処理
-Route::get('/listingsdelete/{listing_id}', 'listingsController@destroy');
+Route::get('/listingsdelete/{listing_id}', 'ListingsController@destroy');
 
 
 // Route::get('/home', 'HomeController@index')->name('home');
