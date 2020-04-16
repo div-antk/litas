@@ -2,6 +2,8 @@
 
 @section('content')
 
+@include('nav')
+
 <div class="panel-body">
 
   {{-- バリデーションエラー時 --}}
