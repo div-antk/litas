@@ -1,9 +1,11 @@
 @extends('app')
 
-@section('content')
+@section('content', 'リストを作る')
 
 @include('nav')
 
+@section('content')
+    
 <div class="panel-body">
 
   {{-- バリデーションエラー時 --}}
