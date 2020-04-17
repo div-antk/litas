@@ -42,6 +42,12 @@
   <div class="col-sm-4">
     <div class="card p-3 mt-3 shadow-none bg-light">
       {{ $listing->title }}
+      <div class="ml-auto card-text">
+        <a onclick="return confirm('{{ $listing->title }}を削除して大丈夫ですか？')" href="{{ url('/listingsdelete', $listing->id) }}"><i class="fas fa-trash"></i></a>
+      </div>
+      <a href="/listing/{{$listing->id}}/card/new" class="text-dark">
+        <i class="far fa-plus-square fa-1x"></i>
+      </a>
     </div>
   </div>
   @endforeach
@@ -50,9 +56,7 @@
 
   <div class="col-sm-4">
     <div class="card p-3 mt-3 shadow-none bg-light">やった
-      @include('listings.done_card')
-      @include('listings.done_card')
-      @include('listings.done_card')
+      @include('card.done_card')
     </div>
   </div>
 
