@@ -1,6 +1,9 @@
-<nav class="navbar navbar-expand navbar-dark blue-gradient">
+<nav class="navbar navbar-expand navbar-dark shadow-none" style="background-color: #005192">
 
-  <a class="navbar-brand" href="/"><i class="far fa-sticky-note mr-1"></i>ララカード</a>
+  <div class="row no-gutters">
+    <a class="navbar-brand font-weight-bold shadow-none" href="/" style="color: white; line-height: 100%">
+    <i class="fas fa-check-square mr-2" style="font-size: 32px; color: white; vertical-align: middle"></i>MyTODO</a>
+  </div>
 
   <ul class="navbar-nav ml-auto">
 
@@ -19,7 +22,7 @@
     @auth
     <li class="nav-item">
       {{-- <a class="nav-link" href="{{ route('listings.new') }}"><i class="fas fa-pen mr-1"></i>投稿する</a> --}}
-      <a class="nav-link" href="{{ route('new') }}"><i class="fas fa-pen mr-1"></i>投稿する</a>
+      <a class="nav-link" href="{{ route('new') }}"><i class="fas fa-pen mr-1"></i>リストをつくる</a>
     </li>
     @endauth
 

@@ -21,7 +21,7 @@
   </div>
 </div> --}}
 
-<div class="container">
+<div class="container-fluid">
   <div class="row">
 
   <div class="col-sm-4">
@@ -40,10 +40,12 @@
 
   @foreach($listings as $listing)
   <div class="col-sm-4">
-    <div class="card p-3 mt-3 shadow-none bg-light">
+    <div class="card p-3 mt-3 shadow-none font-weight-bold bg-light">
       {{ $listing->title }}
       <div class="ml-auto card-text">
-        <a onclick="return confirm('{{ $listing->title }}を削除して大丈夫ですか？')" href="{{ url('/listingsdelete', $listing->id) }}"><i class="fas fa-trash"></i></a>
+        <a onclick="return confirm('{{ $listing->title }}を削除して大丈夫ですか？')" href="{{ url('/listingsdelete', $listing->id) }}">
+          <i class="fas fa-trash"></i>
+        </a>
       </div>
       <a href="/listing/{{$listing->id}}/card/new" class="text-dark">
         <i class="far fa-plus-square fa-1x"></i>
