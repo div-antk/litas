@@ -4,7 +4,11 @@
     <a class="navbar-brand font-weight-bold shadow-none" href="/" style="color: white; line-height: 100%">
     <i class="fas fa-check-square mr-2" style="font-size: 32px; color: white; vertical-align: middle"></i>MyTODO</a>
   </div>
-
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="ユーザーを検索" aria-label="検索">
+    <button type="submit" class="btn btn-sm btn-outline-success rounded-pill shadow-none"><i class="fas fa-search"></i></button>
+  </form>
+  
   <ul class="navbar-nav ml-auto">
 
     @guest
