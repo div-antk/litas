@@ -57,7 +57,7 @@ class ListingsController extends Controller
     {
         $listing = Listing::find($listing_id);
 
-        return view('listing/edit', ['listing' => $listing]);
+        return view('listings/edit', ['listing' => $listing]);
     }
 
     public function update(Request $request)

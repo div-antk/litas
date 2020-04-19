@@ -21,20 +21,13 @@
   </div>
 </div> --}}
 
+      {{-- <nav class="navbar navbar-expand navbar-dark bg-light shadow-none">
+        <a class="card p-2 shadow-none col-sm-12 font-weight-bold text-light text-center" href="{{ route('new') }}" style="background-color: #005192">
+          リストをつくる</a>
+      </nav> --}}
+
 <div class="container-fluid">
   <div class="row">
-
-  {{-- <div class="col-sm-12">
-    <div class="card p-3 mt-3 shadow-none bg-light">けんさく
-      <div class="card mt-3 shadow-sm">
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">ライトコース</li>
-          <li class="list-group-item">スタンダードコース</li>
-          <li class="list-group-item">プロフェッショナルコース</li>
-        </ul>
-      </div>
-    </div>
-  </div> --}}
 
   {{-- リスト --}}
 
