@@ -14,7 +14,7 @@
             <div class="card-text">
               {{-- <form method="POST" action="{{ route('card.store') }}"> --}}
                 @include('card.form')
-                <button type="submit" class="btn blue-gradient btn-block">投稿する</button>
+                <button type="submit" class="btn blue-gradient btn-block">カードを追加する</button>
               {{-- </from> --}}
             </div>
           </div>

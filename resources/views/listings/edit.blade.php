@@ -2,10 +2,12 @@
 
 @section('content')
 
+@include('nav')
+
 <div class="panel-body">
 
   @include('common.errors')
-  <from action="{{ url('/listing/edit') }}" method="POST" class="from-horizontal">
+  <from action="{{ url('/listings/edit') }}" method="POST" class="from-horizontal">
     @csrf
     <div class="form-group">
       <label for="listing" class="col-sm-3 control-label">リスト名</label>
