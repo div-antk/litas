@@ -21,18 +21,24 @@
   </div>
 </div> --}}
 
-      {{-- <nav class="navbar navbar-expand navbar-dark bg-light shadow-none">
-        <a class="card p-2 shadow-none col-sm-12 font-weight-bold text-light text-center" href="{{ route('new') }}" style="background-color: #005192">
-          リストをつくる</a>
-      </nav> --}}
-
 <div class="container-fluid">
   <div class="row">
 
   {{-- リスト --}}
 
-  @foreach($listings as $listing)
+  @foreach ($listings as $listing)
     @include('listings.list')
+      {{-- @foreach ($listings->cards as $card) --}}
+        <div class="card mt-3 shadow-sm">
+          <a href="/listing/{{$listing->id}}/card/{{$card->id}}">
+            <h5 class="card-header">
+              {{ $card->title }}
+            </h5>
+            <div class="card-body">
+            <p class="card-text">やったこと。</p>
+          </div>
+        </div>
+      {{-- @endforeach --}}
   @endforeach
 
   </div>

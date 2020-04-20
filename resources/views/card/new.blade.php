@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('title', '記事投稿')
+@section('title', 'カードを追加する')
 
 @include('nav')
 
@@ -12,10 +12,12 @@
           <div class="card-body pt-0">
             @include('common.errors')
             <div class="card-text">
-              {{-- <form method="POST" action="{{ route('card.store') }}"> --}}
+              <form method="POST" action="/listing/{{ $listing_id }}/card">
+                @csrf
+                <input value="{{ $listing_id }}" type="hidden" name="listing_id">
                 @include('card.form')
                 <button type="submit" class="btn blue-gradient btn-block">カードを追加する</button>
-              {{-- </from> --}}
+              </from>
             </div>
           </div>
         </div>
