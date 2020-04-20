@@ -28,7 +28,7 @@
 
   @foreach ($listings as $listing)
     @include('listings.list')
-      {{-- @foreach ($listings->cards as $card) --}}
+      @foreach ($listings->cards as $card)
         <div class="card mt-3 shadow-sm">
           <a href="/listing/{{$listing->id}}/card/{{$card->id}}">
             <h5 class="card-header">
@@ -38,7 +38,7 @@
             <p class="card-text">やったこと。</p>
           </div>
         </div>
-      {{-- @endforeach --}}
+      @endforeach
   @endforeach
 
   </div>
