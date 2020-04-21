@@ -5,6 +5,11 @@
 
       @if( Auth::id() === $listing->user_id )
     
+      {{-- カードを作成する --}}
+      <a href="/listing/{{$listing->id}}/card/new" class="text-dark">
+        <i class="far fa-plus-square fa-1x ml-1"></i>
+      </a>
+      
       <!-- dropdown -->
         <div class="float-right card-text">
           <div class="dropdown">
@@ -13,7 +18,7 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right">
               <a class="dropdown-item" href="{{ url('/listingsedit', $listing->id) }}">
-                <i class="fas fa-pen mr-1"></i>リストを編集する
+                <i class="fas fa-pen mr-1"></i>リスト名を変更する
               </a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item text-danger" data-toggle="modal" data-target="#modal-delete-{{ $listing->id }}">
@@ -36,8 +41,8 @@
               <form method="GET" action="{{ url('/listingsdelete', $listing->id) }}">
                 @csrf
                 {{-- @method('DELETE') --}}
-                <div class="modal-body">
-                  {{ $listing->title }}を削除します。よろしいですか？
+                <div class="modal-body text-center">
+                  リスト <b>{{ $listing->title }}</b> を削除します。よろしいですか？
                 </div>
                 <div class="modal-footer justify-content-between">
                   <a class="btn btn-outline-grey" data-dismiss="modal">キャンセル</a>
@@ -49,17 +54,14 @@
         </div>
         <!-- modal -->
 
-        @endif
-        <a href="/listing/{{$listing->id}}/card/new" class="text-dark">
-          <i class="far fa-plus-square fa-1x ml-1"></i>
-        </a>
-      </div>
 
-      {{-- <a class="float-right ml-2" style="color: black" onclick="return confirm('{{ $listing->title }}を削除して大丈夫ですか？')" href="{{ url('/listingsdelete', $listing->id) }}">
-        <i class="fas fa-trash"></i>
-      </a>
-      <a class="float-right" style="color: black" onclick="return confirm('{{ $listing->title }}を編集しますか？')" href="{{ url('/listingsedit', $listing->id) }}">
-        <i class="fas fa-trash"></i>
-      </a>--}}
+        {{-- カードの表示 --}}
+        @foreach ($listing->cards as $card)
+          @include('card.card')
+        @endforeach
+
+        @endif
+      
+      </div>
   </div>
 </div>

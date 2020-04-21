@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Listing extends Model
 {
-    public function cards(): HasMany
+    public function cards()
     {
         return $this->hasMany('App\Card');
     }
