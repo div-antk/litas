@@ -39,7 +39,7 @@
                 </button>
               </div>
               <form method="GET" action="{{ url('/listingsdelete', $listing->id) }}">
-                @csrf
+                {{-- @csrf --}}
                 {{-- @method('DELETE') --}}
                 <div class="modal-body text-center">
                   リスト <b>{{ $listing->title }}</b> を削除します。よろしいですか？
@@ -53,7 +53,6 @@
           </div>
         </div>
         <!-- modal -->
-
 
         {{-- カードの表示 --}}
         @foreach ($listing->cards as $card)
