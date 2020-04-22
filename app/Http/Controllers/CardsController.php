@@ -76,11 +76,11 @@ class CardsController extends Controller
         return redirect('/');
     }
 
-    public function destroy($listing_id, $card_id)
+    public function destroy(listing $listing, Card $card)
     {
-        $card = Card::find($card_id);
+        // $card = Card::find();
         $card->delete();
 
-        return redirect('/');
+        return redirect('/')->with('flash_message', 'Post Deleted!');
     }
 }
