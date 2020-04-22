@@ -83,6 +83,7 @@ class ListingsController extends Controller
         $listing = Listing::find($listing_id);
         $listing->delete();
 
-        return redirect('/');
+        return redirect('/')->with('flash_message', 'リストを削除しました！');
+        ;
     }
 }

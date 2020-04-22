@@ -28,9 +28,7 @@
                   <span aria-hidden="true">×</span>
                 </button>
               </div>
-              {{-- <form rel="nofollow" data-method="delete" href="/listing/{{ $listing->id }}/card/{{ $card->id }}/delete"> --}}
-              <form method="post" action="{{ route('card.destroy', ['card' => $card]) }}">
-              {{-- <form method="post" action="listing/{listing_id}/card/{card}"> --}}
+                <form method="post" action="listing/{{$listing->id}}/card/{{$card->id}}">
                 @csrf
                 @method('DELETE')
                 <div class="modal-body text-center">

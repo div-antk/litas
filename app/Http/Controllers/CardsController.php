@@ -81,6 +81,6 @@ class CardsController extends Controller
         // $card = Card::find();
         $card->delete();
 
-        return redirect('/')->with('flash_message', 'Post Deleted!');
+        return redirect('/')->with('flash_message', 'カードを削除しました！');
     }
 }

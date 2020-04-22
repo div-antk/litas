@@ -4,6 +4,13 @@
 
 @include('nav')
 
+{{-- 削除完了フラッシュメッセージ --}}
+@if (Session::has('flash_message'))
+  <div class="alert alert-success text-center role="alert">
+    {{ session('flash_message') }}
+  </div>
+@endif
+
 {{-- <div class="topPage">
   <div class="listWrapper">
      @foreach ($listing ?? ''s as $listing ?? '') 
@@ -23,6 +30,7 @@
 
 <div class="container-fluid">
   <div class="row">
+
 
   {{-- リスト --}}
 
