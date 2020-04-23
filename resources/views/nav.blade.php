@@ -6,14 +6,8 @@
       style="font-size: 32px; color: white; vertical-align: middle"></i>MyTODO</a>
   </div>
   
-  {{-- <form class="form-inline m-0">
-    <input class="form-control mr-sm-2" type="search" placeholder="ユーザーを検索" aria-label="検索">
-    <button type="submit" class="btn btn-sm btn-outline-success rounded-pill shadow-none
-          style=""
-          ><i class="fas fa-search"></i></button>
-  </form> --}}
-  
-  <form class="form-inline m-0" role="search">
+  {{-- 検索機能 --}}
+  {{-- <form class="form-inline m-0" role="search">
     <div class="input-group">
         <input type="search" class="form-control" placeholder="ユーザー名を検索">
         <span class="input-group">
@@ -22,7 +16,7 @@
             </button>
         </span>
     </div>
-  </form>
+  </form> --}}
 
   <ul class="navbar-nav ml-auto">
 

@@ -11,12 +11,6 @@ use Illuminate\Http\Request;
 class ListingsController extends Controller
 {
 
-    // public function __construct()
-    // {
-    //     // ログインしていなかったらログインページに遷移する（この処理を消すとログインしなくてもページを表示する）
-    //     $this->middleware('auth');
-    // }
-
     public function index()
     {
         // $listings = Listing::where('user_id', Auth::user()->id)
@@ -35,8 +29,8 @@ class ListingsController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all() ,
-            // 入力必須、255文字のバリデーション
-            ['list_name' => 'required|max:255', ]);
+            // 入力必須、36文字のバリデーション
+            ['list_name' => 'required|max:36', ]);
 
         // バリデーションの結果がエラーの場合
         if ($validator->fails())
@@ -63,7 +57,7 @@ class ListingsController extends Controller
     public function update(Request $request)
     {
         $validator = Validator::make($request->all() ,
-            ['list_name' => 'required|max:255', ]);
+            ['list_name' => 'required|max:36', ]);
 
         // バリデーションの結果がエラーの場合
         if ($validator->fails())

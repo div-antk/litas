@@ -15,7 +15,7 @@
               <form method="POST" action="{{ url('listings') }}">
                 @csrf
                 <div class="md-form">
-                  <label>タイトル</label>
+                  <label>リスト名</label>
                   <input type="text" name="list_name" class="form-control" required value="{{ old('list_name') }}">
                 </div>
                 <button type="submit" class="btn blue-gradient btn-block">作成</button>
