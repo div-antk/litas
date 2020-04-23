@@ -23,7 +23,7 @@ class CardsController extends Controller
     public function store (Request $request)
     {
         $validator = Validator::make($request->all() ,
-            ['card_title' => 'required|max:255', 'card_memo' => 'required|max:255',]);
+            ['card_title' => 'required|max:36', 'card_memo' => 'max:255',]);
         
         if ($validator->fails())
         {
@@ -60,7 +60,7 @@ class CardsController extends Controller
     public function update(Request $request)
     {
         $validator = Validator::make($request->all(),
-            ['card_title' => 'required|max:255', 'card_memo' => 'required|max:255',]);
+            ['card_title' => 'required|max:36', 'card_memo' => 'max:255',]);
     
         if ($validator->false())
         {
@@ -81,6 +81,6 @@ class CardsController extends Controller
         // $card = Card::find();
         $card->delete();
 
-        return redirect('/')->with('flash_message', 'Post Deleted!');
+        return redirect('/')->with('flash_message', 'カードを削除しました！');
     }
 }

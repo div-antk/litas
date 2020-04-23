@@ -54,12 +54,12 @@
         </div>
         <!-- modal -->
 
+        @endif
+
         {{-- カードの表示 --}}
         @foreach ($listing->cards as $card)
           @include('card.card')
         @endforeach
-
-        @endif
       
       </div>
   </div>

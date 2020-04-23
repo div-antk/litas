@@ -11,12 +11,6 @@ use Illuminate\Http\Request;
 class ListingsController extends Controller
 {
 
-    // public function __construct()
-    // {
-    //     // ログインしていなかったらログインページに遷移する（この処理を消すとログインしなくてもページを表示する）
-    //     $this->middleware('auth');
-    // }
-
     public function index()
     {
         // $listings = Listing::where('user_id', Auth::user()->id)
@@ -35,13 +29,13 @@ class ListingsController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all() ,
-            // 入力必須、255文字のバリデーション
-            ['list_name' => 'required|max:255', ]);
+            // 入力必須、36文字のバリデーション
+            ['list_name' => 'required|max:36', ]);
 
         // バリデーションの結果がエラーの場合
         if ($validator->fails())
         {
-            return redirect()->back()->withErrors($valodator->errors())->withInput();
+            return redirect()->back()->withErrors($validator->errors())->withInput();
         }
 
         // Listingモデル作成
@@ -63,12 +57,12 @@ class ListingsController extends Controller
     public function update(Request $request)
     {
         $validator = Validator::make($request->all() ,
-            ['list_name' => 'required|max:255', ]);
+            ['list_name' => 'required|max:36', ]);
 
         // バリデーションの結果がエラーの場合
         if ($validator->fails())
         {
-            return redirect()->back()->withErrors($valodator->errors())->withInput();
+            return redirect()->back()->withErrors($validator->errors())->withInput();
         }
 
         $listing = Listing::find($request->id);
@@ -83,6 +77,7 @@ class ListingsController extends Controller
         $listing = Listing::find($listing_id);
         $listing->delete();
 
-        return redirect('/');
+        return redirect('/')->with('flash_message', 'リストを削除しました！');
+        ;
     }
 }
