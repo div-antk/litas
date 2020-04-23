@@ -16,7 +16,7 @@
                 @csrf
                 <div class="md-form">
                   <label>リスト名</label>
-                  <input type="text" name="list_name" class="form-control" required value="{{ old('list_name') }}">
+                  <input type="text" name="list_name" class="form-control" required value="{{ old('list_title') }}">
                 </div>
                 <button type="submit" class="btn blue-gradient btn-block">作成</button>
               </from>
