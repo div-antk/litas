@@ -4,12 +4,14 @@
 
 @include('nav')
 
-{{-- 削除完了フラッシュメッセージ --}}
+{{-- 削除完了フラッシュメッセージ
+<div class="panel-body">
 @if (Session::has('flash_message'))
-  <div class="alert alert-success text-center role="alert">
+  <div class="card-text text-left alert alert-success">
     {{ session('flash_message') }}
   </div>
 @endif
+</div> --}}
 
 {{-- <div class="topPage">
   <div class="listWrapper">

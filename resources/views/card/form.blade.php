@@ -1,4 +1,3 @@
-@csrf
 <div class="md-form">
   <label>タイトル</label>
   <input type="text" name="card_title" class="form-control" required value="{{ old('card_title') }}">
