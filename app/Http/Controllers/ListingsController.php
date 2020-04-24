@@ -66,8 +66,8 @@ class ListingsController extends Controller
         }
 
         $listing = Listing::find($request->id);
-        $listings->title = $request->list_name;
-        $listings->save();
+        $listing->title = $request->list_name;
+        $listing->save();
 
         return redirect('/');
     }

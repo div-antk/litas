@@ -14,10 +14,10 @@
             <div class="card-text">
               <form method="post" action="{{ url('listings/edit') }}">
                 @csrf
+                <input type="hidden" name="id" value="{{ old('id', $listing->id) }}">
                 <div class="md-form">
                   <label>リスト名</label>
                   <input type="text" name="list_name" class="form-control" required value="{{ old('list_name', $listing->title) }}">
-                  <input type="hidden" name="id" value="{{ old('id', $listing->id) }}">
                 </div>
                 <button type="submit" class="btn blue-gradient btn-block">更新</button>
               </from>
