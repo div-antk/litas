@@ -19,7 +19,7 @@
                   <label>リスト名</label>
                   <input type="text" name="list_name" class="form-control" required value="{{ old('list_name', $listing->title) }}">
                 </div>
-                <button type="submit" class="btn blue-gradient btn-block">更新</button>
+                <button type="submit" class="btn btn-block shadow-none text-white" style="background-color: #005192">更新</button>
               </from>
             </div>
           </div>

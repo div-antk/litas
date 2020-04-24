@@ -16,7 +16,7 @@
                 @csrf
                 {{-- <input value="{{ $listing_id }}" type="hidden" name="listing_id"> --}}
                 @include('card.form')
-                <button type="submit" class="btn blue-gradient btn-block">カードを追加する</button>
+                <button type="submit" class="btn btn-block shadow-none text-white" style="background-color: #005192">カードを追加する</button>
               </from>
             </div>
           </div>
