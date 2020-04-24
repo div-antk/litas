@@ -12,9 +12,9 @@
           <div class="card-body pt-0">
             @include('common.errors')
             <div class="card-text">
-              <form method="POST" action="{{ route('cards.update', ['listing' => $listing, 'card' => $card]) }}">
+              <form method="post" action="{{ url('/card/edit') }}">
                 @csrf
-                {{-- <input value="{{ $listing_id }}" type="hidden" name="listing_id"> --}}
+                <input type="hidden" name="id" value="{{ old('id', $listing->id) }}">
                 @include('card.form')
                 <button type="submit" class="btn btn-block shadow-none text-white" style="background-color: #005192">カードを追加する</button>
               </from>

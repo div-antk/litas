@@ -62,12 +62,15 @@ class CardsController extends Controller
         $validator = Validator::make($request->all(),
             ['card_title' => 'required|max:36', 'card_memo' => 'max:255',]);
     
-        if ($validator->false())
+        if ($validator->fails())
         {
             return redirect()->back()->withErrors($validator->errors())->withInput();
         }
 
-        $cards = Card::find($request->id);
+        $card = Card::find($request->id);
+        
+        // $card->fill($request->all())->save();
+        
         $card->title = $request->card_title;
         $card->memo = $request->card_memo;
         $card->listing_id = $request->listing_id;
