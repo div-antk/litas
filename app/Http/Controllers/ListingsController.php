@@ -15,8 +15,6 @@ class ListingsController extends Controller
     {
         // $listings = Listing::where('user_id', Auth::user()->id)
         $listings = Listing::all()->sortByDesc('created_at');
-            // ->orderBy('created_at', 'asc')
-            // ->get();
 
             return view('listings.index', ['listings' => $listings]);
     }
@@ -66,8 +64,8 @@ class ListingsController extends Controller
         }
 
         $listing = Listing::find($request->id);
-        $listings->title = $request->list_name;
-        $listings->save();
+        $listing->title = $request->list_name;
+        $listing->save();
 
         return redirect('/');
     }

@@ -18,7 +18,7 @@
                   <label>リスト名</label>
                   <input type="text" name="list_name" class="form-control" required value="{{ old('list_title') }}">
                 </div>
-                <button type="submit" class="btn blue-gradient btn-block">作成</button>
+                <button type="submit" class="btn btn-block shadow-none text-white" style="background-color: #005192">作成</button>
               </from>
             </div>
           </div>
