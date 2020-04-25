@@ -57,7 +57,7 @@ class CardsController extends Controller
         return view('card/edit', ['listings' => $listings, 'listing' => $listing, 'card' => $card]);
     }
 
-    public function update(Request $request)
+    public function update(Request $request, Card $card)
     {
         $validator = Validator::make($request->all(),
             ['card_title' => 'required|max:36', 'card_memo' => 'max:255',]);
@@ -67,14 +67,14 @@ class CardsController extends Controller
             return redirect()->back()->withErrors($validator->errors())->withInput();
         }
 
-        $card = Card::find($request->id);
+        // $card = Card::find($request->id);
         
-        // $card->fill($request->all())->save();
+        $card->fill($request->all())->save();
         
-        $card->title = $request->card_title;
-        $card->memo = $request->card_memo;
-        $card->listing_id = $request->listing_id;
-        $card->save();
+        // $card->title = $request->card_title;
+        // $card->memo = $request->card_memo;
+        // $card->listing_id = $request->listing_id;
+        // $card->save();
 
         return redirect('/');
     }

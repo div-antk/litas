@@ -19,9 +19,14 @@ class ListingsController extends Controller
             return view('listings.index', ['listings' => $listings]);
     }
 
-    public function new()
+    // public function new()
+    // {
+    //     return view('listings/new');
+    // }
+
+    public function create()
     {
-        return view('listings/new');
+        return view('listings.new');
     }
 
     public function store(Request $request)
