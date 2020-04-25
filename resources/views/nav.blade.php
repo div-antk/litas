@@ -58,7 +58,7 @@
 
     @auth
     <li class="nav-item card bg-primary px-2 shadow-none">
-      <a class="nav-link" href="{{ route('new') }}">リストをつくる</a>
+      <a class="nav-link" href="{{ route('listings.create') }}">リストをつくる</a>
     </li>
     @endauth
 
