@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Listing;
-use Auth;
-use Validator;
-
+use App\Http\Requests\ListingRequest;
+// use Auth;
+// use Validator;
 use Illuminate\Http\Request;
 
 class ListingsController extends Controller
@@ -29,25 +29,26 @@ class ListingsController extends Controller
         return view('listings.new');
     }
 
-    public function store(Request $request)
+    public function store(ListingRequest $request, Listing $listing)
     {
-        $validator = Validator::make($request->all() ,
-            // 入力必須、36文字のバリデーション
-            ['list_name' => 'required|max:36', ]);
+        // $validator = Validator::make($request->all() ,
+        //     // 入力必須、36文字のバリデーション
+        //     ['list_name' => 'required|max:36', ]);
 
-        // バリデーションの結果がエラーの場合
-        if ($validator->fails())
-        {
-            return redirect()->back()->withErrors($validator->errors())->withInput();
-        }
+        // // バリデーションの結果がエラーの場合
+        // if ($validator->fails())
+        // {
+        //     return redirect()->back()->withErrors($validator->errors())->withInput();
+        // }
 
         // Listingモデル作成
-        $listings = new Listing;
-        $listings->title = $request->list_name;
-        $listings->user_id = Auth::user()->id;
-        $listings->save();
-
-        return redirect('/');
+        // $listings = new Listing;
+        // $listings->title = $request->list_name;
+        $listing->title = $request->title;
+        // $listings->user_id = Auth::user()->id;
+        $listing->user_id = $request->user()->id;
+        $listing->save();
+        return redirect()->route('listings.index');
     }
 
     public function edit($listing_id)
