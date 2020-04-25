@@ -3,7 +3,7 @@
 Auth::routes();
 
 // リスト一覧
-Route::get('/', 'ListingsController@index')->name('card.index');
+Route::get('/', 'ListingsController@index')->name('listings.index');
 // index以外のルート設定。アドレスを直接打ち込んでcreateなどに飛べないようにする
 Route::resource('/listings', 'ListingsController')->except(['index'])->middleware('auth');
 
