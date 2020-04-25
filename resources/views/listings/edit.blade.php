@@ -1,28 +1,30 @@
 @extends('app')
 
+@section('title', 'リスト名を変更する')
+
+@include('nav')
+
 @section('content')
-
-<div class="panel-body">
-
-  @include('common.errors')
-  <from action="{{ url('/listing/edit') }}" method="POST" class="from-horizontal">
-    @csrf
-    <div class="form-group">
-      <label for="listing" class="col-sm-3 control-label">リスト名</label>
-      <div class="col-sm-6">
-
-        {{-- リスト名 --}}
-        <input type="text" name="list_name" value="{{ old('list_name', $listing->title) }}" class="form-control">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="card-mt-3">
+          <div class="card-body pt-0">
+            @include('common.errors')
+            <div class="card-text">
+              <form method="post" action="{{ url('listings/edit') }}">
+                @csrf
+                <input type="hidden" name="id" value="{{ old('id', $listing->id) }}">
+                <div class="md-form">
+                  <label>リスト名</label>
+                  <input type="text" name="list_name" class="form-control" required value="{{ old('list_name', $listing->title) }}">
+                </div>
+                <button type="submit" class="btn btn-block shadow-none text-white" style="background-color: #005192">更新</button>
+              </from>
+            </div>
+          </div>
+        </div>
       </div>
-      <input type="hidden" name="id" value="{{ old('id', $listing->id) }}">
     </div>
-    <div class="form-group">
-      <div class="col-sm-offset-3 col-sm-6">
-        <button type="submit" class="btn btn-default">
-          <i class="glyphicon glyphicon-saved"></i> 更新
-        </button>
-      </div>
-    </div>
-  </from>
-</div>
+  </div>
 @endsection

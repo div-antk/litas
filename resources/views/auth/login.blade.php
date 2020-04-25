@@ -11,7 +11,7 @@
           <div class="card-body text-center">
             <h2 class="h3 card-title text-center mt-2">ログイン</h2>
 
-            {{-- @include('error_card_list') --}}
+            @include('common.errors')
             
             <div class="card-text">
               <form method="POST" action="{{ route('login') }}">
@@ -34,7 +34,7 @@
                   <a href="{{ route('password.request') }}" class="card-text">パスワードを忘れた方</a>
                 </div>
 
-                <button class="btn btn-block blue-gradient mt-2 mb-2" type="submit">ログイン</button>
+                <button class="btn btn-block my-3 shadow-none text-white" style="background-color: #005192" type="submit">ログイン</button>
 
               </form>
 
