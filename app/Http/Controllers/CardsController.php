@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-use Auth;
+// use Auth;
+// use Validator;
 use App\Card;
+use App\Http\Requests\CardRequest;
 use App\Listing;
-use Validator;
+use App\Http\Requests\ListingRequest;
 
 use Illuminate\Http\Request;
 
@@ -20,33 +22,33 @@ class CardsController extends Controller
         return view('card/new', ['listing_id' => $listing_id]);
     }
 
-    public function store (Request $request)
+    public function store(CardRequest $request, Card $card, listing $listing)
     {
-        $validator = Validator::make($request->all() ,
-            ['card_title' => 'required|max:36', 'card_memo' => 'max:255',]);
+        // $validator = Validator::make($request->all() ,
+        //     ['card_title' => 'required|max:36', 'card_memo' => 'max:255',]);
         
-        if ($validator->fails())
-        {
-            return redirect()->back()->withErrors($validator->errors())->withInput();
-        }
+        // if ($validator->fails())
+        // {
+        //     return redirect()->back()->withErrors($validator->errors())->withInput();
+        // }
 
-        $cards = new Card;
-        $cards->title = $request->card_title;
-        $cards->listing_id = $request->listing_id;
-        $cards->memo = $request->card_memo;
+        // $cards = new Card;
+        $card->fill($request->all());
+        // $card->title = $request->card_title;
+        $card->listing_id = $request->listing_id;
+        // $card->memo = $request->card_memo;
+        $card->save();
 
-        $cards->save();
-
-        return redirect('/');
+        return redirect()->route('listings.index');
     }
 
-    public function show($listing_id, $card_id)
-    {
-        $listing = Listing::find($listing_id);
-        $card = Card::find($card_id);
+    // public function show($listing_id, $card_id)
+    // {
+    //     $listing = Listing::find($listing_id);
+    //     $card = Card::find($card_id);
 
-        return view('card/show', ['listing' => $listing, 'card' => $card]);
-    }
+    //     return view('card/show', ['listing' => $listing, 'card' => $card]);
+    // }
     
     public function edit($listing_id, $card_id)
     {
@@ -84,6 +86,6 @@ class CardsController extends Controller
         // $card = Card::find();
         $card->delete();
 
-        return redirect('/')->with('flash_message', 'カードを削除しました！');
+        return redirect()->route('listings.index');
     }
 }
