@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Listing extends Model
 {
+    protected $fillable = [
+        'title',
+    ];
+
     public function user(): BelongsTo
     {
         return $this->belongsTo('App\User');
