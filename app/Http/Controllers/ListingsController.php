@@ -47,14 +47,29 @@ class ListingsController extends Controller
 
     public function update(ListingRequest $request, Listing $listing)
     {
+        // $validator = Validator::make($request->all() ,
+        //     ['list_name' => 'required|max:36', ]);
+
+        // // バリデーションの結果がエラーの場合
+        // if ($validator->fails())
+        // {
+        //     return redirect()->back()->withErrors($validator->errors())->withInput();
+        // }
+
+        // $listing = Listing::find($request->id);
         $listing->fill($request->all())->save();
+        // $listing->title = $request->list_name;
+        // $listing->save();
+
         return redirect()->route('listings.index');
     }
     
-    public function destroy(Listing $listing)
+    public function destroy($listing_id)
     {
-        // $listing = Listing::find($listing_id);
+        $listing = Listing::find($listing_id);
         $listing->delete();
-        return redirect()->route('listings.index');
+
+        return redirect('/')->with('flash_message', 'リストを削除しました！');
+        ;
     }
 }

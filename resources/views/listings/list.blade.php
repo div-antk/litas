@@ -38,9 +38,9 @@
                   <span aria-hidden="true">×</span>
                 </button>
               </div>
-              <form method="POST" action="{{ route('listings.destroy', ['listing' => $listing]) }}">
-                @csrf
-                @method('DELETE')
+              <form method="GET" action="{{ url('/listingsdelete', $listing->id) }}">
+                {{-- @csrf --}}
+                {{-- @method('DELETE') --}}
                 <div class="modal-body text-center">
                   リスト <b>{{ $listing->title }}</b> を削除します。よろしいですか？
                 </div>
