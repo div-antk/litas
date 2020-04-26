@@ -6,7 +6,7 @@
       @if( Auth::id() === $listing->user_id )
     
       {{-- カードを作成する --}}
-      <a href="/listing/{{$listing->id}}/card/new" class="text-dark">
+      <a class="text-dark" href="/listing/{{$listing->id}}/card/new">
         <i class="far fa-plus-square fa-1x ml-1"></i>
       </a>
       

@@ -25,7 +25,7 @@ class CardRequest extends FormRequest
     {
         return [
             'title' => 'required|max:36',
-            'memo' => 'required|max:155'
+            'memo' => 'required|max:155',
         ];
     }
 
@@ -33,7 +33,7 @@ class CardRequest extends FormRequest
     {
         return [
             'title' => 'カード名',
-            'memo' => '詳細'
+            'memo' => '詳細',
         ];
     }
 }

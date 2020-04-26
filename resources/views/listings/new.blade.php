@@ -14,11 +14,6 @@
             <div class="card-text">
               <form method="POST" action="{{ route('listings.store') }}">
                 @include('listings.form')
-                {{-- @csrf
-                <div class="md-form">
-                  <label>リスト名</label>
-                  <input type="text" name="title" class="form-control" required value="{{ old('title') }}">
-                </div> --}}
                 <button type="submit" class="btn btn-block shadow-none text-white" style="background-color: #005192">作成</button>
               </from>
             </div>
