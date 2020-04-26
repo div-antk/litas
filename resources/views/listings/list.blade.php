@@ -17,7 +17,7 @@
               <i class="fas fa-ellipsis-v"></i>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
-              <a class="dropdown-item" href="{{ url('/listingsedit', $listing->id) }}">
+              <a class="dropdown-item" href="{{ route('listings.edit', ['listing' => $listing]) }}">
                 <i class="fas fa-pen mr-1"></i>リスト名を変更する
               </a>
               <div class="dropdown-divider"></div>
