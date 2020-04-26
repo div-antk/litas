@@ -12,13 +12,10 @@
           <div class="card-body pt-0">
             @include('common.errors')
             <div class="card-text">
-              <form method="post" action="{{ url('listings/edit') }}">
-                @csrf
-                <input type="hidden" name="id" value="{{ old('id', $listing->id) }}">
-                <div class="md-form">
-                  <label>リスト名</label>
-                  <input type="text" name="list_name" class="form-control" required value="{{ old('list_name', $listing->title) }}">
-                </div>
+              {{-- <form method="POST" action="{{ url('listings/edit') }}"> --}}
+              <form method="POST" action="{{ route('listings.update', ['listing' => $listing]) }}">
+                @method('PATCH')
+                @include('listings.form')
                 <button type="submit" class="btn btn-block shadow-none text-white" style="background-color: #005192">更新</button>
               </from>
             </div>

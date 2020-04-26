@@ -38,37 +38,22 @@ class ListingsController extends Controller
         return redirect()->route('listings.index');
     }
 
-    public function edit($listing_id)
+    public function edit(Listing $listing)
     {
-        $listing = Listing::find($listing_id);
+        // $listing = Listing::find($listing_id);
 
-        return view('listings/edit', ['listing' => $listing]);
+        return view('listings.edit', ['listing' => $listing]);
     }
 
-    public function update(Request $request)
+    public function update(ListingRequest $request, Listing $listing)
     {
-        $validator = Validator::make($request->all() ,
-            ['list_name' => 'required|max:36', ]);
-
-        // バリデーションの結果がエラーの場合
-        if ($validator->fails())
-        {
-            return redirect()->back()->withErrors($validator->errors())->withInput();
-        }
-
-        $listing = Listing::find($request->id);
-        $listing->title = $request->list_name;
-        $listing->save();
-
-        return redirect('/');
+        $listing->fill($request->all())->save();
+        return redirect()->route('listings.index');
     }
     
-    public function destroy($listing_id)
+    public function destroy(Listing $listing)
     {
-        $listing = Listing::find($listing_id);
         $listing->delete();
-
-        return redirect('/')->with('flash_message', 'リストを削除しました！');
-        ;
+        return redirect()->route('listings.index');
     }
 }
