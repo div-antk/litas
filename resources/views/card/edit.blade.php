@@ -15,17 +15,8 @@
               {{-- <form method="POST" action="{{ url('/card/edit') }}"> --}}
               <form method="POST" action="{{ route('cards.update', ['card' => $card]) }}">
                 @method('PATCH')
-                  @csrf
-                  <div class="md-form">
-                    <label>カード名</label>
-                    <input type="text" name="title" class="form-control" required value="{{ $card->title ?? old('title') }}">
-                  </div>
-                  
-                  <div class="form-group">
-                    <label></label>
-                    <textarea name="memo" class="form-control" row="16" placeholder="詳細">{{ $card->memo ?? old('memo') }}</textarea>
-                  </div>
-                  <input type="hidden" name="listing_id" value="{{  $listing->id ?? old('id') }}">
+                @include('card.form')
+                <input type="hidden" name="listing_id" value="{{  $listing->id ?? old('id') }}">
                 <button type="submit" class="btn btn-block shadow-none text-white" style="background-color: #005192">カードを編集する</button>
               </from>
             </div>
