@@ -29,7 +29,7 @@ Route::post('/listing/{listing_id}/card', 'CardsController@store')->name('cards.
 // Route::post('card', 'CardsController@store')->name('cards.store');
 Route::get('listing/{listing}/card/{card}/edit', 'CardsController@edit')->name('cards.edit');
 Route::patch('/card/edit', 'CardsController@update')->name('cards.update');
-// Route::delete('listing/{listing}/card/{card}', 'CardsController@destroy')->name('cards.destroy');
+Route::delete('listing/{listing}/card/{card}', 'CardsController@destroy')->name('cards.destroy');
 
 
 // Route::get('/home', 'HomeController@index')->name('home');
