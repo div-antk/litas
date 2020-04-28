@@ -36,6 +36,8 @@ class CardsController extends Controller
     
     public function edit($listing_id, $card_id)
     {
+        // dd($card_id, $listing_id);
+
         $listings = Listing::where('user_id', Auth::user()->id)->get();
         $listing = Listing::find($listing_id);
         $card = Card::find($card_id);
@@ -46,7 +48,7 @@ class CardsController extends Controller
     public function update(CardRequest $request, Card $card, listing $listing)
     {
         // $card = Card::find($request->id);
-        
+        // dd($card, $card->id);
         $card->fill($request->all());
         // $card->title = $request->card_title;
         // $card->memo = $request->card_memo;

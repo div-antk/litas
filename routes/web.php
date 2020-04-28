@@ -27,8 +27,8 @@ Route::resource('/listings', 'ListingsController')->except(['index'])->middlewar
 Route::get('listing/{listing_id}/card/new', 'CardsController@new')->name('cards.create');
 Route::post('/listing/{listing_id}/card', 'CardsController@store')->name('cards.store');
 // Route::post('card', 'CardsController@store')->name('cards.store');
-Route::get('listing/{listing}/card/{card}/edit', 'CardsController@edit')->name('cards.edit');
-Route::patch('/card/edit', 'CardsController@update')->name('cards.update');
+Route::get('listing/{listing_id}/card/{card_id}/edit', 'CardsController@edit')->name('cards.edit');
+Route::patch('/card/{card}', 'CardsController@update')->name('cards.update');
 Route::delete('listing/{listing}/card/{card}', 'CardsController@destroy')->name('cards.destroy');
 
 
