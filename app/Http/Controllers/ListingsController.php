@@ -16,13 +16,8 @@ class ListingsController extends Controller
         // $listings = Listing::where('user_id', Auth::user()->id)
         $listings = Listing::all()->sortByDesc('created_at');
 
-            return view('listings.index', ['listings' => $listings]);
+        return view('listings.index', ['listings' => $listings]);
     }
-
-    // public function new()
-    // {
-    //     return view('listings/new');
-    // }
 
     public function create()
     {

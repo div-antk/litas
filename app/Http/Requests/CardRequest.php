@@ -25,7 +25,7 @@ class CardRequest extends FormRequest
     {
         return [
             'title' => 'required|max:36',
-            'memo' => 'required|max:155',
+            'memo' => 'max:155|nullable',
         ];
     }
 
