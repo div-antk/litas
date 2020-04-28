@@ -14,4 +14,4 @@ Route::get('listing/{listing}/card/{card}/edit', 'CardsController@edit')->name('
 Route::patch('/card/{card}', 'CardsController@update')->name('cards.update');
 Route::delete('listing/{listing}/card/{card}', 'CardsController@destroy')->name('cards.destroy');
 
-// Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
