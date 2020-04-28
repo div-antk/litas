@@ -50,7 +50,8 @@ class RegisterController extends Controller
 
     public function index()
     {
-        return redirect('/');
+        // return redirect('/');
+        return view('listings.index');
     }
 
     protected function validator(array $data)

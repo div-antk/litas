@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 class ListingsController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $listings = Listing::all()->sortByDesc('created_at');

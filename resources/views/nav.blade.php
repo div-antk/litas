@@ -37,13 +37,10 @@
     <li class="nav-item dropdown mr-2">
       <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
         aria-haspopup="true" aria-expanded="false">
-        <i class="fas fa-user-circle"></i>
+        <i class="fas fa-user-circle mr-2"></i>{{ Auth::user()->name }}
       </a>
       <div class="dropdown-menu dropdown-menu-right dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-        <button class="dropdown-item" type="button"
-          マイページ
-        </button>
-        <div class="dropdown-divider"></div>
+        {{-- <div class="dropdown-divider"></div> --}}
         <button form="logout-button" class="dropdown-item" type="submit">
           ログアウト
         </button>
@@ -57,7 +54,8 @@
 
     @auth
     <li class="nav-item card bg-primary px-2 shadow-none">
-      <a class="nav-link" href="{{ route('listings.create') }}">リストをつくる</a>
+      <a class="nav-link d-none d-sm-block" href="{{ route('listings.create') }}">リストをつくる</a>
+      <a class="nav-link d-block d-sm-none" href="{{ route('listings.create') }}"><i class="fas fa-clipboard-list"></i></a>
     </li>
     @endauth
 
