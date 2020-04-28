@@ -6,7 +6,7 @@
       @if( Auth::id() === $listing->user_id )
     
       {{-- カードを作成する --}}
-      <a class="text-dark" href="/listing/{{$listing->id}}/card/new">
+      <a href="/listing/{{$listing->id}}/card/new" class="text-dark">
         <i class="far fa-plus-square fa-1x ml-1"></i>
       </a>
       
@@ -57,7 +57,7 @@
         @endif
 
         {{-- カードの表示 --}}
-        @foreach ($listing->cards as $card)
+        @foreach ($listing->cards()->orderBy('created_at', 'desc')->get() as $card)
           @include('card.card')
         @endforeach
       

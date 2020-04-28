@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Listing;
 use App\Http\Requests\ListingRequest;
-// use Auth;
-// use Validator;
 use Illuminate\Http\Request;
 
 class ListingsController extends Controller
@@ -13,9 +11,7 @@ class ListingsController extends Controller
 
     public function index()
     {
-        // $listings = Listing::where('user_id', Auth::user()->id)
         $listings = Listing::all()->sortByDesc('created_at');
-
         return view('listings.index', ['listings' => $listings]);
     }
 
@@ -35,8 +31,6 @@ class ListingsController extends Controller
 
     public function edit(Listing $listing)
     {
-        // $listing = Listing::find($listing_id);
-
         return view('listings.edit', ['listing' => $listing]);
     }
 
