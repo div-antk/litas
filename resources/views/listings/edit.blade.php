@@ -12,7 +12,6 @@
           <div class="card-body pt-0">
             @include('common.errors')
             <div class="card-text">
-              {{-- <form method="POST" action="{{ url('listings/edit') }}"> --}}
               <form method="POST" action="{{ route('listings.update', ['listing' => $listing]) }}">
                 @method('PATCH')
                 @include('listings.form')

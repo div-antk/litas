@@ -17,6 +17,13 @@ class CardsController extends Controller
     //     $this->middleware('auth');
     // }
 
+    // public function index()
+    // {
+    //     $cards = Card::orderBy('id', 'desc')->get();
+
+    //     return view('listings.index', ['cards' => $cards,'listings' => $listings]);
+    // }
+
     public function new ($listing_id)
     {
         return view('card/new', ['listing_id' => $listing_id]);
@@ -48,7 +55,6 @@ class CardsController extends Controller
     public function update(CardRequest $request, Card $card, listing $listing)
     {
         // $card = Card::find($request->id);
-        // dd($card, $card->id);
         $card->fill($request->all());
         // $card->title = $request->card_title;
         // $card->memo = $request->card_memo;
