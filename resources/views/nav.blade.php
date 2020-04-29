@@ -40,15 +40,19 @@
         <i class="fas fa-user-circle mr-2"></i>{{ Auth::user()->name }}
       </a>
       <div class="dropdown-menu dropdown-menu-right dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-        {{-- <div class="dropdown-divider"></div> --}}
+        <button class="dropdown-item" type="button"
+        onclick="location.href='{{ route("users.show", ["name" => Auth::user()->name]) }}'">
+          リストを見る
+        </button>
+        <div class="dropdown-divider"></div>
         <button form="logout-button" class="dropdown-item" type="submit">
           ログアウト
         </button>
       </div>
-    </li>
-    <form id="logout-button" method="POST" action="{{ route('logout') }}">
-      @csrf
-    </form>
+      </li>
+      <form id="logout-button" method="POST" action="{{ route('logout') }}">
+        @csrf
+      </form>
     <!-- Dropdown -->
     @endauth
 
@@ -60,16 +64,5 @@
     @endauth
 
   </ul>
-
-</nav>
-
-<nav class="navbar navbar-expand navbar-light bg-light shadow-none" style="height: 40px">
-
-  <p class="navbar-text text-muted font-weight-bold my-0 mr-1">
-    {{ $user->name }}
-  </p>
-  <p class="text-muted my-0">
-    さんのリスト
-  </p>
 
 </nav>

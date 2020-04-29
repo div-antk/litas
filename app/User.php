@@ -42,4 +42,12 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Listing');
     }
+
+    // public function Cards()
+    // {
+    //     return $this->hasManyThrough(
+    //         'App\Listing',
+    //         'App\Card'
+    //     );
+    // }
 }

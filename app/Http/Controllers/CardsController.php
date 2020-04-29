@@ -17,13 +17,6 @@ class CardsController extends Controller
     //     $this->middleware('auth');
     // }
 
-    // public function index()
-    // {
-    //     $cards = Card::orderBy('id', 'desc')->get();
-
-    //     return view('listings.index', ['cards' => $cards,'listings' => $listings]);
-    // }
-
     public function new ($listing_id)
     {
         return view('card/new', ['listing_id' => $listing_id]);
@@ -43,8 +36,6 @@ class CardsController extends Controller
     
     public function edit($listing_id, $card_id)
     {
-        // dd($card_id, $listing_id);
-
         $listings = Listing::where('user_id', Auth::user()->id)->get();
         $listing = Listing::find($listing_id);
         $card = Card::find($card_id);
@@ -56,8 +47,6 @@ class CardsController extends Controller
     {
         // $card = Card::find($request->id);
         $card->fill($request->all());
-        // $card->title = $request->card_title;
-        // $card->memo = $request->card_memo;
         $card->listing_id = $request->listing_id;
         $card->save();
 
@@ -66,7 +55,6 @@ class CardsController extends Controller
 
     public function destroy(listing $listing, Card $card)
     {
-        // $card = Card::find();
         $card->delete();
 
         return redirect()->route('listings.index');
