@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Auth;
 use App\User;
 use App\Listing;
 use App\Http\Requests\ListingRequest;
@@ -34,7 +35,7 @@ class ListingsController extends Controller
         $listing->fill($request->all());
         $listing->user_id = $request->user()->id;
         $listing->save();
-        return redirect()->route('listings.index');
+        return redirect()->route("users.show", ["name" => Auth::user()->name]);
     }
 
     public function edit(Listing $listing)
@@ -45,12 +46,12 @@ class ListingsController extends Controller
     public function update(ListingRequest $request, Listing $listing)
     {
         $listing->fill($request->all())->save();
-        return redirect()->route('listings.index');
+        return redirect()->route("users.show", ["name" => Auth::user()->name]);
     }
     
     public function destroy(Listing $listing)
     {
         $listing->delete();
-        return redirect()->route('listings.index');
+        return redirect()->route("users.show", ["name" => Auth::user()->name]);
     }
 }

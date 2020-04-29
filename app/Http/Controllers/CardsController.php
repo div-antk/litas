@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Auth;
 // use Validator;
+use App\User;
 use App\Card;
 use App\Http\Requests\CardRequest;
 use App\Listing;
@@ -24,14 +25,11 @@ class CardsController extends Controller
 
     public function store(CardRequest $request, Card $card, listing $listing)
     {
-        // $cards = new Card;
         $card->fill($request->all());
-        // $card->title = $request->card_title;
         $card->listing_id = $request->listing_id;
-        // $card->memo = $request->card_memo;
         $card->save();
 
-        return redirect()->route('listings.index');
+        return redirect()->route("users.show", ["name" => Auth::user()->name]);
     }
     
     public function edit($listing_id, $card_id)
@@ -50,13 +48,13 @@ class CardsController extends Controller
         $card->listing_id = $request->listing_id;
         $card->save();
 
-        return redirect()->route('listings.index');
+        return redirect()->route("users.show", ["name" => Auth::user()->name]);
     }
 
     public function destroy(listing $listing, Card $card)
     {
         $card->delete();
 
-        return redirect()->route('listings.index');
+        return redirect()->route("users.show", ["name" => Auth::user()->name]);
     }
 }

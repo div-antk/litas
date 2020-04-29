@@ -36,15 +36,16 @@
           <span aria-hidden="true">×</span>
         </button>
       </div>
-        <form method="post" action="listing/{{$listing->id}}/card/{{$card->id}}">
+        <form method="post" action="/listing/{{$listing->id}}/card/{{$card->id}}">
+        {{-- <form method="post" action="{{ route('cards.destroy', ['card' => $card]) }}"> --}}
         @csrf
         @method('DELETE')
         <div class="modal-body text-center">
           カード <b>{{ $card->title }}</b> を削除します。よろしいですか？
         </div>
         <div class="modal-footer justify-content-between">
-          <a class="btn btn-outline-grey" data-dismiss="modal">キャンセル</a>
-          <button type="submit" class="btn btn-danger">削除する</button>
+          <a class="btn btn-outline-grey shadow-none" data-dismiss="modal">キャンセル</a>
+          <button type="submit" class="btn btn-danger shadow-none">削除する</button>
         </div>
       </form>
     </div>

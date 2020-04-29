@@ -2,8 +2,20 @@
 
 Auth::routes();
 
+// GoogleやSNSでのログイン
+Route::prefix('login')->name('login.')->group(function (){
+  Route::get('/{provider}', 'Auth\LoginController@redirectToProvider')->name('{provider}');
+  Route::get('/{provider}/callback', 'Auth\LoginController@handleProviderCallback')->name('{provider}.callback');
+});
+
+// GoogleやSNSでのユーザー登録
+Route::prefix('register')->name('register.')->group(function (){
+  Route::get('/{provider}', 'Auth\RegisterController@showProviderUserRegistrationForm')->name('{provider}');
+  Route::post('/{provider}', 'Auth\RegisterController@registerProviderUser');
+});
+
 // ユーザー
-Route::prefix('users')->name('users.')->group(function (){
+Route::prefix('/')->name('users.')->group(function (){
   Route::get('/{name}', 'UsersController@show')->name('show');
 });
 

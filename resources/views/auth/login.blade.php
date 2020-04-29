@@ -36,9 +36,14 @@
                   <a href="{{ route('password.request') }}" class="card-text">パスワードを忘れた方</a>
                 </div>
 
-                <button class="btn btn-block my-3 shadow-none text-white" style="background-color: #005192" type="submit">ログイン</button>
-
+                <button class="btn btn-block mt-3 shadow-none text-white" style="background-color: #005192" type="submit">ログイン</button>
               </form>
+
+              {{-- Googleでログイン --}}
+              <a href="{{ route('login.{provider}', ['provider' => 'google']) }}" 
+                class="btn btn-block btn-danger my-3 shadow-none">
+                <i class="fab fa-google mr-1"></i>Googleでログイン
+              </a>
 
               <div class="mt-0">
                 <a href="{{ route('register') }}" class="card-text">ユーザー登録はこちら</a>
