@@ -4,7 +4,10 @@
       {{ $listing->title }}
 
       @if( Auth::id() !== $listing->user_id )
-        <br><div class="small text-muted">作成者: {{ $user->name }}</div>
+        <a href="{{ route('users.show', ['name' => $listing->user->name]) }}" class="text-dark">
+          <br><div class="small text-muted">作成者: {{ $listing->user->name }}
+        </div>
+        </a>
       @endif
 
       @if( Auth::id() === $listing->user_id )

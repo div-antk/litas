@@ -4,13 +4,11 @@
 
 @include('nav')
 
-<nav class="navbar navbar-expand navbar-light bg-light shadow-none" style="height: 40px">
-
+{{-- <nav class="navbar navbar-expand navbar-light bg-light shadow-none" style="height: 40px">
   <p class="text-muted my-0">
     みなさんのリスト
   </p>
-
-</nav>
+</nav> --}}
 
 <div class="container-fluid">
   <div class="row">
