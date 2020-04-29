@@ -3,10 +3,17 @@
     <div class="card-text">
       {{ $listing->title }}
 
+      @if( Auth::id() !== $listing->user_id )
+        <a href="{{ route('users.show', ['name' => $listing->user->name]) }}" class="text-dark">
+          <br><div class="small text-muted">作成者: {{ $listing->user->name }}
+        </div>
+        </a>
+      @endif
+
       @if( Auth::id() === $listing->user_id )
     
       {{-- カードを作成する --}}
-      <a href="/listing/{{$listing->id}}/card/new" class="text-dark">
+      <a class="text-dark" href="/listing/{{$listing->id}}/card/new">
         <i class="far fa-plus-square fa-1x ml-1"></i>
       </a>
       

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\User;
 use App\Listing;
 use App\Http\Requests\ListingRequest;
 use Illuminate\Http\Request;
@@ -9,15 +9,18 @@ use Illuminate\Http\Request;
 class ListingsController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
-    public function index()
+    public function index(User $user)
     {
         $listings = Listing::all()->sortByDesc('created_at');
-        return view('listings.index', ['listings' => $listings]);
+        return view('listings.index', [
+            'listings' => $listings,
+            'user' => $user,
+            ]);
     }
 
     public function create()
