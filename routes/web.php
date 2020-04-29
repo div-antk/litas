@@ -2,6 +2,11 @@
 
 Auth::routes();
 
+// ユーザー
+Route::prefix('users')->name('users.')->group(function (){
+  Route::get('/{name}', 'UsersController@show')->name('show');
+});
+
 // リスト一覧
 Route::get('/', 'ListingsController@index')->name('listings.index');
 // index以外のルート設定。アドレスを直接打ち込んでcreateなどに飛べないようにする
@@ -14,4 +19,4 @@ Route::get('listing/{listing}/card/{card}/edit', 'CardsController@edit')->name('
 Route::patch('/card/{card}', 'CardsController@update')->name('cards.update');
 Route::delete('listing/{listing}/card/{card}', 'CardsController@destroy')->name('cards.destroy');
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
