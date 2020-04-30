@@ -13,7 +13,10 @@
     @endif
 
     <div class="card-text d-inline-block pl-2 text-muted">
-      <listing-like>
+      <listing-like
+        :initial-is-liked-by='@json($listing->isLikedBy(Auth::user()))'
+        :initial-count-likes='@json($listing->count_likes)'
+      >
       </listing-like>
     </div>
 
