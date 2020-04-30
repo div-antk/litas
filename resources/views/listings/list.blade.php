@@ -1,24 +1,33 @@
 <div class="col-sm-4">
-  <div class="card p-3 mt-3 shadow-none bg-light">
-    <div class="card-text">
+  <div class="card p-3 mt-3 shadow-none bg-light ">
+    <div class="card-text d-inline-block">
       {{ $listing->title }}
 
-      @if( Auth::id() !== $listing->user_id )
-        <a href="{{ route('users.show', ['name' => $listing->user->name]) }}" class="text-dark">
-          <br><div class="small text-muted">作成者: {{ $listing->user->name }}
-        </div>
-        </a>
-      @endif
-
-      @if( Auth::id() === $listing->user_id )
+    @if( Auth::id() === $listing->user_id )
     
       {{-- カードを作成する --}}
       <a class="text-dark" href="/listing/{{$listing->id}}/card/new">
         <i class="far fa-plus-square fa-1x ml-1"></i>
       </a>
-      
+
+    @endif
+
+    <div class="card-text d-inline-block pl-2 text-muted">
+      <listing-like>
+      </listing-like>
+    </div>
+
+      {{-- <div class="card-body pt-0 pb-2 pl-3 d-inline-block">
+        <div class="card-text">
+          <listing-like>
+          </listing-like>
+        </div>
+      </div> --}}
+
+      @if( Auth::id() === $listing->user_id )
+
       <!-- dropdown -->
-        <div class="float-right card-text">
+        <div class="float-right ml-auto card-text">
           <div class="dropdown">
             <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fas fa-ellipsis-v"></i>
@@ -60,6 +69,12 @@
           </div>
         </div>
         <!-- modal -->
+
+        @else
+        <a class="card-subtitle" href="{{ route('users.show', ['name' => $listing->user->name]) }}" class="text-dark">
+          <br><div class="small text-muted">作成者: {{ $listing->user->name }}
+        </div>
+        </a>
 
         @endif
 
