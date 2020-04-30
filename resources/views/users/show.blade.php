@@ -1,5 +1,10 @@
 @extends('app')
 
+@section('title')
+{{ $user->name }}さん / MyTODO
+@stop
+
+
 @section('content')
 
 @include('nav')

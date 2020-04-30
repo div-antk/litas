@@ -1,5 +1,7 @@
 @extends('app')
 
+@section('title', 'MyTODO')
+
 @section('content')
 
 @include('nav')
