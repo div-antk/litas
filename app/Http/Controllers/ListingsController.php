@@ -38,6 +38,27 @@ class ListingsController extends Controller
         return redirect()->route("users.show", ["name" => Auth::user()->name]);
     }
 
+    public function like(Request $request, Listing $listing)
+    {
+        $listing->likes()->detach($request->user()->id);
+        $listing->likes()->attach($request->user()->id);
+        
+        return [
+            'id' => $listing->id,
+            'countLikes' => $listing->count_likes,
+        ];
+    }
+
+    public function unlike(Request $request, Listing $listing)
+    {
+        $listing->likes()->detach($request->user()->id);
+        
+        return [
+            'id' => $listing->id,
+            'countLikes' => $listing->count_likes,
+        ];
+    }
+
     public function edit(Listing $listing)
     {
         return view('listings.edit', ['listing' => $listing]);
