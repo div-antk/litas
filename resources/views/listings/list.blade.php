@@ -12,10 +12,13 @@
 
     @endif
 
+    {{-- いいね機能 --}}
     <div class="card-text d-inline-block pl-2 text-muted">
       <listing-like
         :initial-is-liked-by='@json($listing->isLikedBy(Auth::user()))'
         :initial-count-likes='@json($listing->count_likes)'
+        :authorized='@json(Auth::check())'
+        endpoint="{{ route('listings.like', ['listing' => $listing]) }}"
       >
       </listing-like>
     </div>
