@@ -1,6 +1,8 @@
 @extends('app')
 
-@section('title', 'リストを編集する')
+@section('title')
+リストを編集する / Litas
+@stop
 
 @include('nav')
 

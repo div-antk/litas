@@ -24,10 +24,13 @@ Route::get('/', 'ListingsController@index')->name('listings.index');
 // index以外のルート設定。アドレスを直接打ち込んでcreateなどに飛べないようにする
 Route::resource('/listings', 'ListingsController')->except(['index'])->middleware('auth');
 
+// いいね機能
 Route::prefix('listings')->name('listings.')->group(function (){
   Route::put('/{listing}/like', 'ListingsController@like')->name('like')->middleware('auth');
   Route::delete('/{listing}/like', 'ListingsController@unlike')->name('unlike')->middleware('auth');
 });
+
+Route::get('/tags/{name}', 'TagController@show')->name('tags.show');
 
 // カード
 Route::get('listing/{listing}/card/new', 'CardsController@new')->name('cards.create');
