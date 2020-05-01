@@ -84,13 +84,14 @@
 
         @endif
 
+        {{-- タグの表示 --}}
         @foreach ($listing->tags as $tag)
           @if($loop->first)
-            <div class="card-body py-2 pl-2">
+            <div class="card-body py-2 pl-0">
               <div class="card-text line-height">
           @endif
                 <a href="" class="border p-1 mr-1 mt-1 text-muted">
-                  {{ $tag->name }}
+                  {{ $tag->hashtag }}
                 </a>
           @if($loop->last)
               </div>
