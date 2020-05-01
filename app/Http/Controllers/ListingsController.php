@@ -27,7 +27,16 @@ class ListingsController extends Controller
 
     public function create()
     {
-        return view('listings.new');
+        // タグ名自動補完のため
+        $allTagsNames = Tag::all()->map(function ($tag) {
+            return ['text' => $tag->name];
+        });
+
+        return view('listings.new', [
+            'allTagNames' => $allTagsNames,
+        ]);
+
+        // return view('listings.new');
     }
 
     public function store(ListingRequest $request, Listing $listing)
@@ -72,11 +81,17 @@ class ListingsController extends Controller
             return ['text' => $tag->name];
         });
 
+        // タグ名自動補完のため
+        $allTagsNames = Tag::all()->map(function ($tag) {
+            return ['text' => $tag->name];
+        });
+
         // return view('listings.edit', ['listing' => $listing]);
         
         return view('listings.edit', [
             'listing' => $listing,
             'tagNames' => $tagNames,
+            'allTagNames' => $allTagsNames,
         ]);
     }
 
