@@ -5,12 +5,11 @@
 @stop
 
 @section('content')
+<body style="background-color: #005192">
   <div class="container">
     <div class="row">
       <div class="mx-auto col col-12 col-sm-11 col-md-9 col-lg-7 col-xl-6">
-        <h1 class="text-center font-weight-bold"><a class="text-dark" href="/">
-          <i class="fas fa-check-square mr-2"
-          style="vertical-align: middle; color: #005192"></i>Litas</a></h1>
+        <img class="ml-2 mt-3" src="{{ asset('img/logo.png') }}" alt="logo" width="120px">
         <div class="card mt-3">
           <div class="card-body text-center">
             <h2 class="h3 card-title text-center mt-2">ログイン</h2>
@@ -44,7 +43,7 @@
                   <a href="{{ route('password.request') }}" class="card-text">パスワードを忘れた方</a>
                 </div>
 
-                <button class="btn btn-block my-3 shadow-none text-white" style="background-color: #005192" type="submit">ログイン</button>
+                <button class="btn btn-block my-3 shadow-none text-white bg-primary" type="submit">ログイン</button>
               </form>
 
               <div class="mt-0">
@@ -57,4 +56,5 @@
       </div>
     </div>
   </div>
+</body>
 @endsection
