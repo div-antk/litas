@@ -1,6 +1,8 @@
 @extends('app')
 
-@section('title', 'カードを追加する')
+@section('title')
+カードを追加する / Litas
+@stop
 
 @include('nav')
 

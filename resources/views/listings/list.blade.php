@@ -40,7 +40,7 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right">
               <a class="dropdown-item" href="{{ route('listings.edit', ['listing' => $listing]) }}">
-                <i class="fas fa-pen mr-1"></i>リスト名を変更する
+                <i class="fas fa-pen mr-1"></i>リストを編集する
               </a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item text-danger" data-toggle="modal" data-target="#modal-delete-{{ $listing->id }}">
@@ -83,6 +83,22 @@
         </a>
 
         @endif
+
+        {{-- タグの表示 --}}
+        @foreach ($listing->tags as $tag)
+          @if($loop->first)
+            <div class="card-body py-2 pl-0">
+              <div class="card-text line-height">
+          @endif
+                <a href="{{ route('tags.show', ['name' => $tag->name]) }}" 
+                  class="p-1 mr-1 mt-1 text-muted">
+                  {{ $tag->hashtag }}
+                </a>
+          @if($loop->last)
+              </div>
+            </div>
+          @endif
+        @endforeach
 
         {{-- カードの表示 --}}
         @foreach ($listing->cards()->orderBy('created_at', 'desc')->get() as $card)

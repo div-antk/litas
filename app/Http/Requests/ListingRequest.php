@@ -25,6 +25,7 @@ class ListingRequest extends FormRequest
     {
         return [
             'title' => 'required|max:36',
+            'tags' => 'json|regex:/^(?!.*\s).+$/u'
         ];
     }
 
@@ -32,6 +33,17 @@ class ListingRequest extends FormRequest
     {
         return [
             'title' => 'リスト名',
+            'tags' => 'タグ',
         ];
+    }
+
+    // JSON形式の文字列整形
+    public function passedValidation()
+    {
+        $this->tags = collect(json_decode($this->tags))
+            ->slice(0, 3)
+            ->map(function ($requestTag) {
+                return $requestTag->text;
+            });
     }
 }

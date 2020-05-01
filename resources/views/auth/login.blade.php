@@ -1,6 +1,8 @@
 @extends('app')
 
-@section('title', 'ログイン')
+@section('title')
+ログイン / Litas
+@stop
 
 @section('content')
   <div class="container">
@@ -8,7 +10,7 @@
       <div class="mx-auto col col-12 col-sm-11 col-md-9 col-lg-7 col-xl-6">
         <h1 class="text-center font-weight-bold"><a class="text-dark" href="/">
           <i class="fas fa-check-square mr-2"
-          style="vertical-align: middle; color: #005192"></i>MyTODO</a></h1>
+          style="vertical-align: middle; color: #005192"></i>Litas</a></h1>
         <div class="card mt-3">
           <div class="card-body text-center">
             <h2 class="h3 card-title text-center mt-2">ログイン</h2>

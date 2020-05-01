@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('title')
-{{ $user->name }}さん / MyTODO
+{{ $user->name }}さん / Litas
 @stop
 
 
