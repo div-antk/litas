@@ -5,6 +5,7 @@
 </div>
 <div class="form-group">
   <listing-tags-input
+    :initial-tags='@json($tagNames ?? [])'
   >
   </listing-tags-input>
 </div>

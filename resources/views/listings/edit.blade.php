@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('title', 'リスト名を変更する')
+@section('title', 'リストを編集する')
 
 @include('nav')
 

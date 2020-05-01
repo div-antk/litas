@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Auth;
 use App\User;
 use App\Listing;
+use App\Tag;
 use App\Http\Requests\ListingRequest;
 use Illuminate\Http\Request;
 
@@ -35,6 +36,12 @@ class ListingsController extends Controller
         $listing->fill($request->all());
         $listing->user_id = $request->user()->id;
         $listing->save();
+
+        $request->tags->each(function ($tagName) use ($listing) {
+            $tag = Tag::firstOrCreate(['name' => $tagName]);
+            $listing->tags()->attach($tag);
+        });
+
         return redirect()->route("users.show", ["name" => Auth::user()->name]);
     }
 
@@ -61,12 +68,28 @@ class ListingsController extends Controller
 
     public function edit(Listing $listing)
     {
-        return view('listings.edit', ['listing' => $listing]);
+        $tagNames = $listing->tags->map(function ($tag) {
+            return ['text' => $tag->name];
+        });
+
+        // return view('listings.edit', ['listing' => $listing]);
+        
+        return view('listings.edit', [
+            'listing' => $listing,
+            'tagNames' => $tagNames,
+        ]);
     }
 
     public function update(ListingRequest $request, Listing $listing)
     {
         $listing->fill($request->all())->save();
+
+        $listing->tags()->detach();
+        $request->tags->each(function ($tagName) use ($listing) {
+            $tag = Tag::firstOrCreate(['name' => $tagName]);
+            $listing->tags()->attach($tag);
+        });
+
         return redirect()->route("users.show", ["name" => Auth::user()->name]);
     }
     
