@@ -3,12 +3,13 @@
 import './bootstrap'
 import Vue from 'vue'
 import ListingLike from './components/ListingLike'
-// import ListingTagsInput from './components/ListingTagsInput'
+import ListingTagsInput from './components/ListingTagsInput'
 // import FollowButton from './components/FollowButton'
 
 const app = new Vue({
   el: '#app',
   components: {
     ListingLike,
+    ListingTagsInput,
   }
 })
