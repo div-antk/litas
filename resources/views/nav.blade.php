@@ -2,8 +2,8 @@
 
   <div class="row no-gutters">
     <a class="navbar-brand font-weight-bold shadow-none" href="/" style="color: white; line-height: 100%">
-    <i class="fas fa-check-square mr-2"
-      style="font-size: 32px; color: white; vertical-align: middle"></i>Litas</a>
+      <img class="ml-2" src="{{ asset('img/logo.png') }}" alt="logo" height="40px">
+    </a>
   </div>
   
   {{-- 検索機能 --}}
