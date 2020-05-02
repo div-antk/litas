@@ -13,11 +13,6 @@ use Illuminate\Http\Request;
 
 class CardsController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
-
     public function new ($listing_id)
     {
         return view('card/new', ['listing_id' => $listing_id]);
@@ -43,7 +38,6 @@ class CardsController extends Controller
 
     public function update(CardRequest $request, Card $card, listing $listing)
     {
-        // $card = Card::find($request->id);
         $card->fill($request->all());
         $card->listing_id = $request->listing_id;
         $card->save();

@@ -9,21 +9,10 @@ use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
-    // public function index(string $name)
-    // {
-    //     $user = User::where('name', $name)->first();
-
-    //     $listings = $user->listings->sortByDesc('created_at');
-
-    //     return view('users.index', [
-    //         'user' => $user,
-    //         'listings' => $listings,
-    //     ]);
-    // }
-
     public function show(string $name, Card $card)
     {
-        $user = User::where('name', $name)->first();
+        $user = User::where('name', $name)->first()
+            ->load(['listings.user', 'listings.likes', 'listings.tags']);
 
         $listings = $user->listings->sortByDesc('created_at');
 

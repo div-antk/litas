@@ -18,7 +18,9 @@ class ListingsController extends Controller
 
     public function index(User $user)
     {
-        $listings = Listing::all()->sortByDesc('created_at');
+        $listings = Listing::all()->sortByDesc('created_at')
+            ->load(['user', 'likes', 'tags']);
+
         return view('listings.index', [
             'listings' => $listings,
             'user' => $user,
