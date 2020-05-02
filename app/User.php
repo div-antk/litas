@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Mail\BareMail;
+use App\Notifications\PasswordResetNotification;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -41,6 +43,11 @@ class User extends Authenticatable
     public function listings(): HasMany
     {
         return $this->hasMany('App\Listing');
+    }
+
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new PasswordResetNotification($token, new BareMail()));
     }
 
     // public function Cards()
