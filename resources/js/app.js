@@ -4,6 +4,7 @@ import './bootstrap'
 import Vue from 'vue'
 import ListingLike from './components/ListingLike'
 import ListingTagsInput from './components/ListingTagsInput'
+import draggable from 'vuedraggable'
 // import FollowButton from './components/FollowButton'
 
 const app = new Vue({
@@ -11,5 +12,6 @@ const app = new Vue({
   components: {
     ListingLike,
     ListingTagsInput,
+    draggable,
   }
 })

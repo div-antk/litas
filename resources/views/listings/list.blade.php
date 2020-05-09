@@ -104,7 +104,7 @@
         @foreach ($listing->cards()->orderBy('created_at', 'desc')->get() as $card)
           @include('card.card')
         @endforeach
-      
+
       </div>
   </div>
 </div>
