@@ -30,6 +30,7 @@ Route::prefix('listings')->name('listings.')->group(function (){
   Route::delete('/{listing}/like', 'ListingsController@unlike')->name('unlike')->middleware('auth');
 });
 
+// タグ（検索）
 Route::get('/tags/{name}', 'TagController@show')->name('tags.show');
 
 // カード

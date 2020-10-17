@@ -7,16 +7,16 @@
   </div>
   
   {{-- 検索機能 --}}
-  {{-- <form class="form-inline m-0" role="search">
+  <form class="form-inline m-0 pl-4" role="search">
     <div class="input-group">
-        <input type="search" class="form-control" placeholder="ユーザー名を検索">
+        <input type="search" class="form-control" value="tag" placeholder="タグを検索">
         <span class="input-group">
-            <button type="submit" class="btn-outline-white">
+            <button type="submit" class="btn-outline-white" href="{{ route('tags.show', 'tag']) }}>
               <i class="fas fa-search"></i>
             </button>
         </span>
     </div>
-  </form> --}}
+  </form>
 
   <ul class="navbar-nav ml-auto">
 
