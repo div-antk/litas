@@ -10,12 +10,6 @@ use Illuminate\Http\Request;
 
 class ListingsController extends Controller
 {
-
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
-
     public function index(User $user)
     {
         $listings = Listing::all()->sortByDesc('created_at')
