@@ -14,4 +14,16 @@ class TagController extends Controller
 
         return view('tags.show', ['tag' => $tag]);
     }
+
+    public function search(Request $request)
+    {
+        $tag = Tag::where('name', $request->tag)->first();
+
+        if ($tag) {
+            return view('tags.show')
+                ->with('tag' ,$tag);
+        } else {
+            return redirect()->route("listings.index");
+        }
+    }
 }

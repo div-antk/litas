@@ -15,7 +15,7 @@ class ListingsController extends Controller
         $listings = Listing::all()->sortByDesc('created_at')
             ->load(['user', 'likes', 'tags']);
 
-        return view('listings.index', [
+            return view('listings.index', [
             'listings' => $listings,
             'user' => $user,
             ]);

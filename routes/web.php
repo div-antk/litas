@@ -31,6 +31,7 @@ Route::prefix('listings')->name('listings.')->group(function (){
 });
 
 // タグ（検索）
+Route::get('/tags/search', 'TagController@search')->name('tags.search');
 Route::get('/tags/{name}', 'TagController@show')->name('tags.show');
 
 // カード
