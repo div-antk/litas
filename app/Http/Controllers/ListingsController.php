@@ -12,13 +12,17 @@ class ListingsController extends Controller
 {
     public function index(User $user)
     {
-        $listings = Listing::all()->sortByDesc('created_at')
-            ->load(['user', 'likes', 'tags']);
+        // ランダムに表示
+        $listings = Listing::inRandomOrder()
+            ->take(6)
+            ->with('user')
+            ->with('likes')
+            ->with('tags')
+            ->get();
 
-            return view('listings.index', [
-            'listings' => $listings,
-            'user' => $user,
-            ]);
+        return view('listings.index')
+            ->with('listings', $listings)
+            ->with('user', $user);
     }
 
     public function create()

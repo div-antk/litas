@@ -9,7 +9,7 @@
   {{-- 検索機能 --}}
   <form class="form-inline m-0 pl-4" role="search" action="{{ route('tags.search') }}">
     <div class="input-group">
-        <input type="search" class="form-control" name="tag" placeholder="タグを検索">
+        <input type="search" class="form-control" name="tag" placeholder="タグを検索" style="width: 160px">
         <span class="input-group">
             <button type="submit" class="btn-outline-white" }}>
               <i class="fas fa-search"></i>
