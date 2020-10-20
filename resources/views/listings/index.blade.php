@@ -13,14 +13,11 @@
 </nav> --}}
 
 <div class="container-fluid">
-  <div class="row">
-
-  {{-- リスト --}}
-
-  @foreach ($listings as $listing)
-    @include('listings.list')
-  @endforeach
-
+  <div class="row masonry-container">
+    {{-- リスト --}}
+    @foreach ($listings as $listing)
+      @include('listings.list')
+    @endforeach
   </div>
 </div>
 
