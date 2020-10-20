@@ -11,7 +11,7 @@
     <div class="input-group">
         <input type="search" class="form-control" name="tag" placeholder="タグを検索" style="width: 160px">
         <span class="input-group">
-            <button type="submit" class="btn-outline-white" }}>
+            <button type="submit" class="btn-outline-white">
               <i class="fas fa-search"></i>
             </button>
         </span>
@@ -40,8 +40,7 @@
         <i class="fas fa-user-circle mr-2"></i>{{ Auth::user()->name }}
       </a>
       <div class="dropdown-menu dropdown-menu-right dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-        <button class="dropdown-item" type="button"
-          onclick="location.href='{{ route("users.show", ["name" => Auth::user()->name]) }}'">
+        <button class="dropdown-item" type="button" onclick="location.href='{{ route('users.show', ['name' => Auth::user()->name]) }}'">
           マイリスト
         </button>
         <div class="dropdown-divider"></div>
