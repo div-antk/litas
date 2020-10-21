@@ -13,8 +13,7 @@ class ListingsController extends Controller
     public function index(User $user)
     {
         // ランダムに表示
-        $listings = Listing::inRandomOrder()
-            ->take(6)
+        $listings = Listing::inRandomOrder()->take(12)
             ->with('user')
             ->with('likes')
             ->with('tags')

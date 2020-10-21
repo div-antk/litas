@@ -24,7 +24,6 @@
   <div class="row">
 
   {{-- リスト --}}
-
   @foreach ($listings as $listing)
     @include('listings.list')
   @endforeach

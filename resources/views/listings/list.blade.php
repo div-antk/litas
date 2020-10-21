@@ -1,4 +1,4 @@
-<div class="col-xl-3 col-md-4 col-sm-6">
+<div class="col-xl-3 col-md-4 col-sm-6 item">
   <div class="card p-3 mt-3 shadow-none bg-light ">
     <div class="card-text d-inline-block">
       {{ $listing->title }}
