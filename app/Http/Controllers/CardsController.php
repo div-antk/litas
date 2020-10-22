@@ -8,6 +8,7 @@ use App\Card;
 use App\Http\Requests\CardRequest;
 use App\Listing;
 use App\Http\Requests\ListingRequest;
+use Carbon\Carbon;
 
 use Illuminate\Http\Request;
 
@@ -36,11 +37,24 @@ class CardsController extends Controller
         return view('card/edit', ['listings' => $listings, 'listing' => $listing, 'card' => $card]);
     }
 
-    public function update(CardRequest $request, Card $card, listing $listing)
+    public function update(CardRequest $request, Card $card)
     {
-        $card->fill($request->all());
-        $card->listing_id = $request->listing_id;
-        $card->save();
+        $update = Card::where('id', $card->id)
+            ->update([
+                'title' => $request->title,
+                'memo' => $request->memo
+                ]);
+
+        if ($update) {
+            Listing::where('id', $request->listing_id)
+                ->update(['updated_at', Carbon::now()]);
+        }
+
+
+        // if ($card->listing_id = $request->listing_id) {
+        //     $card->fill($request->all())
+        //     ->save();
+        // }
 
         return redirect()->route("users.show", ["name" => Auth::user()->name]);
     }
