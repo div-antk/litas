@@ -14,7 +14,7 @@ class UsersController extends Controller
         $user = User::where('name', $name)->first()
             ->load(['listings.user', 'listings.likes', 'listings.tags']);
 
-        $listings = $user->listings->sortByDesc('created_at');
+        $listings = $user->listings->sortBy('updated_at');
 
         return view('users.show', [
             'user' => $user,
