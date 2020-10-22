@@ -14,12 +14,13 @@ class UsersController extends Controller
         $user = User::where('name', $name)->first()
             ->load(['listings.user', 'listings.likes', 'listings.tags']);
 
-        $listings = $user->listings->sortBy('updated_at');
+        // リストを更新順に並べる
+        $listings = $user->listings
+            ->sortBy('updated_at');
 
-        return view('users.show', [
-            'user' => $user,
-            'listings' => $listings,
-            'card' => $card,
-        ]);
+        return view('users.show')
+            ->with('user', $user)
+            ->with('listings', $listings)
+            ->with('card', $card);
     }
 }
