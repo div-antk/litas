@@ -39,22 +39,18 @@ class CardsController extends Controller
 
     public function update(CardRequest $request, Card $card)
     {
-        $update = Card::where('id', $card->id)
+        // カード情報が更新されたらtrue
+        $done = boolval(Card::where('id', $card->id)
             ->update([
                 'title' => $request->title,
                 'memo' => $request->memo
-                ]);
+                ]));
 
-        if ($update) {
+        // カード情報が更新されたらリストのupdate_atを更新
+        if($done) {
             Listing::where('id', $request->listing_id)
-                ->update(['updated_at', Carbon::now()]);
+                ->update(['updated_at' => Carbon::now()]);
         }
-
-
-        // if ($card->listing_id = $request->listing_id) {
-        //     $card->fill($request->all())
-        //     ->save();
-        // }
 
         return redirect()->route("users.show", ["name" => Auth::user()->name]);
     }

@@ -16,7 +16,7 @@ class UsersController extends Controller
 
         // リストを更新順に並べる
         $listings = $user->listings
-            ->sortBy('updated_at');
+            ->sortByDesc('updated_at');
 
         return view('users.show')
             ->with('user', $user)
