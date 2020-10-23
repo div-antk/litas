@@ -21,6 +21,15 @@ class CardsController extends Controller
 
     public function store(CardRequest $request, Card $card, listing $listing)
     {
+        $done = Card::where('listing_id', $request->listing_id)
+        ->create([
+            'title' => $request->title,
+            'memo' => $request->memo,
+            'listing_id' => $request->listing_id,
+            ]);
+        
+        dd($done);
+        
         $card->fill($request->all());
         $card->listing_id = $request->listing_id;
         $card->save();
