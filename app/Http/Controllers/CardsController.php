@@ -15,7 +15,8 @@ class CardsController extends Controller
 {
     public function new ($listing_id)
     {
-        return view('card/new', ['listing_id' => $listing_id]);
+        return view('card/new')
+            ->with('listing_id', $listing_id);
     }
 
     public function store(CardRequest $request)

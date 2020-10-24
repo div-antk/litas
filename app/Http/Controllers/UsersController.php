@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 use App\User;
 use App\Card;
-// use App\Listing;
-// use App\Http\Requests\ListingRequest;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller

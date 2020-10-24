@@ -31,11 +31,8 @@ class ListingsController extends Controller
             return ['text' => $tag->name];
         });
 
-        return view('listings.new', [
-            'allTagNames' => $allTagsNames,
-        ]);
-
-        // return view('listings.new');
+        return view('listings.new')
+            ->with('allTagNames', $allTagsNames);
     }
 
     public function store(ListingRequest $request, Listing $listing)
@@ -85,13 +82,10 @@ class ListingsController extends Controller
             return ['text' => $tag->name];
         });
 
-        // return view('listings.edit', ['listing' => $listing]);
-        
-        return view('listings.edit', [
-            'listing' => $listing,
-            'tagNames' => $tagNames,
-            'allTagNames' => $allTagsNames,
-        ]);
+        return view('listings.edit')
+            ->with('listing', $listing)
+            ->with('tagNames', $tagNames)
+            ->with('allTagNames', $allTagsNames);
     }
 
     public function update(ListingRequest $request, Listing $listing)
