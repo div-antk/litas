@@ -28,16 +28,15 @@ class CardsController extends Controller
             ]);
         
 
-        return redirect()->route("users.show", ["name" => Auth::user()->name]);
+        return redirect()->route("users.show", ['name' => Auth::user()->name]);
     }
     
-    public function edit($listing_id, $card_id)
+    public function edit($card_id)
     {
-        $listings = Listing::where('user_id', Auth::user()->id)->get();
-        $listing = Listing::find($listing_id);
         $card = Card::find($card_id);
 
-        return view('card/edit', ['listings' => $listings, 'listing' => $listing, 'card' => $card]);
+        return view('card/edit')
+            ->with('card', $card);
     }
 
     public function update(CardRequest $request, Card $card)
