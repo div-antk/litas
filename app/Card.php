@@ -10,6 +10,7 @@ class Card extends Model
     protected $fillable = [
         'title',
         'memo',
+        'listing_id'
     ];
     
     public function listing(): BelongsTo

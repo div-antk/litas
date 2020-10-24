@@ -19,20 +19,14 @@ class CardsController extends Controller
         return view('card/new', ['listing_id' => $listing_id]);
     }
 
-    public function store(CardRequest $request, Card $card, listing $listing)
+    public function store(CardRequest $request)
     {
-        $done = Card::where('listing_id', $request->listing_id)
-        ->create([
+        Card::create([
+            'listing_id' => $request->listing_id,
             'title' => $request->title,
             'memo' => $request->memo,
-            'listing_id' => $request->listing_id,
             ]);
         
-        dd($done);
-        
-        $card->fill($request->all());
-        $card->listing_id = $request->listing_id;
-        $card->save();
 
         return redirect()->route("users.show", ["name" => Auth::user()->name]);
     }
