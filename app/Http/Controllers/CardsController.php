@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 use Auth;
-// use Validator;
 use App\User;
 use App\Card;
-use App\Http\Requests\CardRequest;
 use App\Listing;
+use App\Http\Requests\CardRequest;
 use App\Http\Requests\ListingRequest;
 use Carbon\Carbon;
 
@@ -21,12 +20,14 @@ class CardsController extends Controller
 
     public function store(CardRequest $request)
     {
-        $done = Card::create([
+        // カードが作成されたらtrue
+        $done = boolval(Card::create([
             'listing_id' => $request->listing_id,
             'title' => $request->title,
             'memo' => $request->memo,
-            ]);
+            ]));
         
+        // カードが作成されたらリストのupdate_atを更新
         if($done) {
             Listing::where('id', $request->listing_id)
                 ->update(['updated_at' => Carbon::now()]);
@@ -45,14 +46,12 @@ class CardsController extends Controller
 
     public function update(CardRequest $request, Card $card)
     {
-        // カード情報が更新されたらtrue
         $done = boolval(Card::where('id', $card->id)
             ->update([
                 'title' => $request->title,
                 'memo' => $request->memo
                 ]));
 
-        // カード情報が更新されたらリストのupdate_atを更新
         if($done) {
             Listing::where('id', $request->listing_id)
                 ->update(['updated_at' => Carbon::now()]);
@@ -63,7 +62,12 @@ class CardsController extends Controller
 
     public function destroy(listing $listing, Card $card)
     {
-        $card->delete();
+        $done = boolval($card->delete());
+
+        if($done) {
+            Listing::where('id', $card->listing_id)
+                ->update(['updated_at' => Carbon::now()]);
+        }
 
         return redirect()->route("users.show", ["name" => Auth::user()->name]);
     }
