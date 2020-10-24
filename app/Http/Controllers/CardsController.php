@@ -21,12 +21,16 @@ class CardsController extends Controller
 
     public function store(CardRequest $request)
     {
-        Card::create([
+        $done = Card::create([
             'listing_id' => $request->listing_id,
             'title' => $request->title,
             'memo' => $request->memo,
             ]);
         
+        if($done) {
+            Listing::where('id', $request->listing_id)
+                ->update(['updated_at' => Carbon::now()]);
+        }
 
         return redirect()->route("users.show", ['name' => Auth::user()->name]);
     }
