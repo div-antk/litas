@@ -16,6 +16,7 @@
             </button>
         </span>
     </div>
+    <listing-search></listing-search>
   </form>
 
   <ul class="navbar-nav ml-auto">
@@ -57,7 +58,7 @@
 
     @auth
     <li class="nav-item card bg-primary px-2 shadow-none">
-      <a class="nav-link d-none d-sm-block" href="{{ route('listings.create') }}">リストをつくる</a>
+      <a class="nav-link d-none d-sm-block" href="{{ route('listings.create') }}"><i class="fas fa-clipboard-list"></i></a>
       <a class="nav-link d-block d-sm-none" href="{{ route('listings.create') }}"><i class="fas fa-clipboard-list"></i></a>
     </li>
     @endauth

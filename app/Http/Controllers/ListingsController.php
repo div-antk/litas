@@ -7,6 +7,7 @@ use App\Listing;
 use App\Tag;
 use App\Http\Requests\ListingRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class ListingsController extends Controller
 {
@@ -19,6 +20,15 @@ class ListingsController extends Controller
             ->with('tags')
             ->get();
 
+        // インクリメンタルサーチ
+        if (!empty(Input::get('title'))) {
+            dd('kkå');
+            $queryTitle = Input::get('title');
+            return Listing::select('id', 'title')
+                ->where('title', 'LIKE', '%$queryTitle%')
+                ->limit(10)->get();
+        }
+        
         return view('listings.index')
             ->with('listings', $listings)
             ->with('user', $user);
