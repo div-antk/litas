@@ -78,7 +78,7 @@
 
         @else
         <a class="card-subtitle" href="{{ route('users.show', ['name' => $listing->user->name]) }}" class="text-dark">
-          <br><div class="small text-muted">作成者: {{ $listing->user->name }}
+          <br><div class="small text-muted">{{ '@'.$listing->user->name }}
         </div>
         </a>
 
