@@ -17,4 +17,4 @@ use Illuminate\Http\Request;
 //     return $request->user();
 // });
 
-Route::get('/listings', 'ListingsController@index');
+Route::get('/listings', 'Api\ListingsController@index');

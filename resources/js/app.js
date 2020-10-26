@@ -7,7 +7,6 @@ import './macy'
 import Vue from 'vue'
 import ListingLike from './components/ListingLike'
 import ListingTagsInput from './components/ListingTagsInput'
-import ListingSearch from './components/ListingSearch'
 import draggable from 'vuedraggable'
 // import FollowButton from './components/FollowButton'
 
@@ -16,7 +15,6 @@ const app = new Vue({
   components: {
     ListingLike,
     ListingTagsInput,
-    ListingSearch,
     draggable,
   }
 })

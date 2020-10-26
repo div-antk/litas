@@ -16,7 +16,6 @@
             </button>
         </span>
     </div>
-    <listing-search></listing-search>
   </form>
 
   <ul class="navbar-nav ml-auto">
