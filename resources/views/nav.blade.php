@@ -37,7 +37,7 @@
     <li class="nav-item dropdown mr-2">
       <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
         aria-haspopup="true" aria-expanded="false">
-        <i class="fas fa-user-circle mr-2"></i>{{ Auth::user()->name }}
+        {{ Auth::user()->name }}
       </a>
       <div class="dropdown-menu dropdown-menu-right dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
         <button class="dropdown-item" type="button" onclick="location.href='{{ route('users.show', ['name' => Auth::user()->name]) }}'">
@@ -56,10 +56,10 @@
     @endauth
 
     @auth
-    <li class="nav-item card bg-primary px-2 shadow-none">
-      <a class="nav-link d-none d-sm-block" href="{{ route('listings.create') }}"><i class="fas fa-clipboard-list"></i></a>
-      <a class="nav-link d-block d-sm-none" href="{{ route('listings.create') }}"><i class="fas fa-clipboard-list"></i></a>
-    </li>
+    {{-- <li class="nav-item card bg-primary px-2 shadow-none"> --}}
+      <a class="list-create nav-item card shadow-none" 
+        href="{{ route('listings.create') }}"><i class="fas fa-pen"></i></a>
+    {{-- </li> --}}
     @endauth
 
   </ul>
