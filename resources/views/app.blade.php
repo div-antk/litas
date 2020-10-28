@@ -14,7 +14,8 @@
   <!-- Material Design Bootstrap -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.11/css/mdb.min.css" rel="stylesheet">
   {{-- CSS --}}
-  <link rel="stylesheet" href="{{ asset('css/index.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/nav.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/listing.css') }}">
   {{-- favicon --}}
   <link href="{{ asset('/favicon.ico') }}" rel="shortcut icon">
 </head>

@@ -87,11 +87,11 @@
         {{-- タグの表示 --}}
         @foreach ($listing->tags as $tag)
           @if($loop->first)
-            <div class="card-body py-2 pl-0">
+            <div class="hashtag-wrap card-body">
               <div class="card-text line-height">
           @endif
                 <a href="{{ route('tags.show', ['name' => $tag->name]) }}" 
-                  class="p-1 mr-1 mt-1 text-muted">
+                  class="hashtag text-muted">
                   {{ $tag->hashtag }}
                 </a>
           @if($loop->last)

@@ -58,7 +58,7 @@
     @auth
     {{-- <li class="nav-item card bg-primary px-2 shadow-none"> --}}
       <a class="list-create nav-item card shadow-none" 
-        href="{{ route('listings.create') }}"><i class="fas fa-pen"></i></a>
+        href="{{ route('listings.create') }}"><i class="far fa-clipboard"></i></a>
     {{-- </li> --}}
     @endauth
 
