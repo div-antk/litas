@@ -40,6 +40,7 @@ class ListingRequest extends FormRequest
     // JSON形式の文字列整形
     public function passedValidation()
     {
+        dd($this);
         $this->tags = collect(json_decode($this->tags))
             ->slice(0, 3)
             ->map(function ($requestTag) {
