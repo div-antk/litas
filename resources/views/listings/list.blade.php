@@ -1,13 +1,13 @@
 <div class="col-xl-3 col-md-4 col-sm-6 item">
   <div class="card p-3 mt-3 shadow-none bg-light ">
     <div class="card-text d-inline-block">
-      {{ $listing->title }}
+      <div class="listing-title">{{ $listing->title }}</div>
 
     @if( Auth::id() === $listing->user_id )
     
       {{-- カードを作成する --}}
       <a class="text-dark" href="/listing/{{$listing->id}}/card/new">
-        <i class="far fa-plus-square fa-1x ml-1"></i>
+        <i class="fas fa-plus-square fa-1x ml-1"></i>
       </a>
 
     @endif
@@ -23,20 +23,13 @@
       </listing-like>
     </div>
 
-      {{-- <div class="card-body pt-0 pb-2 pl-3 d-inline-block">
-        <div class="card-text">
-          <listing-like>
-          </listing-like>
-        </div>
-      </div> --}}
-
       @if( Auth::id() === $listing->user_id )
 
       <!-- dropdown -->
         <div class="float-right ml-auto card-text">
           <div class="dropdown">
             <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-ellipsis-v"></i>
+              <i class="fas fa-ellipsis-h"></i>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
               <a class="dropdown-item" href="{{ route('listings.edit', ['listing' => $listing]) }}">
