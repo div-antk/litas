@@ -1,6 +1,6 @@
 <div class="card mt-2 shadow-sm dropdown" >
   <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <div class="card-header">
+    <div class="card-title">
       {{ $card->title }}
     </div>
   </a>
