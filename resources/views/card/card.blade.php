@@ -14,7 +14,6 @@
   @if( Auth::id() === $listing->user_id )
 
     <div class="dropdown-divider"></div>
-      {{-- <a class="dropdown-item small" href="/listing/{{ $listing->id }}/card/{{ $card->id }}/edit"> --}}
       <a class="dropdown-item small" href="{{ route('cards.edit', ['card' => $card->id]) }}">
 
         <i class="fas fa-pen mr-1"></i>カードを編集する
@@ -38,8 +37,8 @@
           <span aria-hidden="true">×</span>
         </button>
       </div>
-        <form method="post" action="/listing/{{$listing->id}}/card/{{$card->id}}">
-        {{-- <form method="post" action="{{ route('cards.destroy', ['card' => $card]) }}"> --}}
+        {{-- <form method="post" action="/listing/{{$listing->id}}/card/{{$card->id}}"> --}}
+        <form method="post" action="{{ route('cards.destroy', ['card' => $card]) }}">
         @csrf
         @method('DELETE')
         <div class="modal-body text-center">
