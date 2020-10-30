@@ -18,7 +18,7 @@
               <form method="POST" action="{{ route('cards.update', ['card' => $card]) }}">
                 @method('PATCH')
                 @include('card.form')
-                <input type="hidden" name="listing_id" value="{{  $listing->id ?? old('id') }}">
+                <input type="hidden" name="listing_id" value="{{ $card->listing_id }}">
                 <button type="submit" class="btn btn-block shadow-none text-white" style="background-color: #005192">カードを編集する</button>
               </from>
             </div>
