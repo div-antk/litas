@@ -37,8 +37,9 @@ Route::get('/tags/{name}', 'TagController@show')->name('tags.show');
 // カード
 Route::get('listing/{listing}/card/new', 'CardsController@new')->name('cards.create');
 Route::post('/listing/{listing_id}/card', 'CardsController@store')->name('cards.store');
-Route::get('listing/{listing}/card/{card}/edit', 'CardsController@edit')->name('cards.edit');
+// Route::get('listing/{listing}/card/{card}/edit', 'CardsController@edit')->name('cards.edit');
+Route::get('card/edit/{card}', 'CardsController@edit')->name('cards.edit');
 Route::patch('/card/{card}', 'CardsController@update')->name('cards.update');
-Route::delete('listing/{listing}/card/{card}', 'CardsController@destroy')->name('cards.destroy');
+Route::delete('card/{card}', 'CardsController@destroy')->name('cards.destroy');
 
 // Route::get('/home', 'HomeController@index')->name('home');

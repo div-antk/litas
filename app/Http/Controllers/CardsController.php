@@ -37,11 +37,9 @@ class CardsController extends Controller
         return redirect()->route("users.show", ['name' => Auth::user()->name]);
     }
     
-    public function edit(Request $resuest, $card)
+    public function edit($id)
     {
-        dd(url()->card);
-
-        $card = Card::find($card_id);
+        $card = Card::find($id);
 
         return view('card/edit')
             ->with('card', $card);

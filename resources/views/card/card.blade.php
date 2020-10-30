@@ -14,7 +14,9 @@
   @if( Auth::id() === $listing->user_id )
 
     <div class="dropdown-divider"></div>
-      <a class="dropdown-item small" href="/listing/{{ $listing->id }}/card/{{ $card->id }}/edit">
+      {{-- <a class="dropdown-item small" href="/listing/{{ $listing->id }}/card/{{ $card->id }}/edit"> --}}
+      <a class="dropdown-item small" href="{{ route('cards.edit', ['card' => $card->id]) }}">
+
         <i class="fas fa-pen mr-1"></i>カードを編集する
       </a>
     <div class="dropdown-divider"></div>
