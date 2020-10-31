@@ -10,6 +10,9 @@
         <i class="fas fa-plus-square fa-1x ml-1"></i>
       </a>
 
+      {{-- <button>Click</button>
+      <div id="overlay"></div> --}}
+
     @endif
 
     {{-- いいね機能 --}}
@@ -44,6 +47,15 @@
         </div>
         <!-- dropdown -->
   
+        {{-- カード作成モーダル --}}
+        {{-- <div id="overlay">
+          <div id="content">
+            <p>モダール</p>
+            <p><button>close</button></p>
+          </div>
+        </div> --}}
+        {{-- カード作成モーダル --}}
+
         <!-- modal -->
         <div id="modal-delete-{{ $listing->id }}" class="modal fade" tabindex="-1" role="dialog">
           <div class="modal-dialog" role="document">
