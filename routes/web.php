@@ -21,6 +21,7 @@ Route::prefix('/')->name('users.')->group(function (){
 
 // リスト一覧
 Route::get('/', 'ListingsController@index')->name('listings.index');
+Route::get('/listings/search', 'ListingsController@search')->name('listings.search');
 // index以外のルート設定。アドレスを直接打ち込んでcreateなどに飛べないようにする
 Route::resource('/listings', 'ListingsController')->except(['index'])->middleware('auth');
 

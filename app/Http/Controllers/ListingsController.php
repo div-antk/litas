@@ -106,4 +106,9 @@ class ListingsController extends Controller
         $listing->delete();
         return redirect()->route("users.show", ["name" => Auth::user()->name]);
     }
+
+    public function search(Request $request)
+    {
+        dd($request->all());
+    }
 }
