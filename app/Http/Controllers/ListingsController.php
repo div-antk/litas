@@ -109,16 +109,26 @@ class ListingsController extends Controller
 
     public function search(Request $request)
     {
-        $keyword = Listing::where('name', 'iLIKE', "%$request->keyword%")
-        ->join('tag', 'tag.name', '=', 'tag.listing_id')
-        ->get();
+        $list = Listing::whereHas('tags', function($q) use($request){
+            $q->where('name', 'iLIKE', "%$request->keyword%");
+        })->orWhere(function($q) use($request){
+            $q->where('title', 'iLIKE', "%$request->keyword%");
+        })->get();
 
+        dd($list);
 
-        $keyword = Tag::where('title', 'iLIKE', "%$request->keyword%")
-            ->join('tag', 'tag.name', '=', 'tag.listing_id')
-            ->get();
+        $key = Listing::where('title', 'iLIKE', "%$request->keyword%")
+            ->with('tags')->where('name', 'iLIKE', "%$request->keyword%")->get();
 
-        dd($keyword);
+        dd($key);
+
+        // $keyword = Listing::where('title', 'iLIKE', "%$request->keyword%")
+        //     ->with('tags')->where('name', 'iLIKE', "%$request->keyword%")
+        //     // ->select('title', 'name')
+        //     ->get();
+
+        // dd($keyword);
+
         if ($keyword) {
             return view('listings.search_result')
                 ->with('keyword' ,$keyword);
