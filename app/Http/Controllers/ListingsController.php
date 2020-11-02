@@ -109,6 +109,14 @@ class ListingsController extends Controller
 
     public function search(Request $request)
     {
-        dd($request->all());
-    }
+        $keyword = Tag::where('name', 'LIKE', "%$request->keyword%")
+            ->get();
+
+        dd($keyword);
+        if ($keyword) {
+            return view('listings.search_result')
+                ->with('keyword' ,$keyword);
+        } else {
+            return redirect()->route("listings.index");
+        }    }
 }

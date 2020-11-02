@@ -9,7 +9,7 @@
   {{-- 検索機能 --}}
   <form class="form-inline m-0 pl-4" role="search" action="{{ route('listings.search') }}">
     <div class="input-group">
-        <input type="text" class="form-control" value="" placeholder="タグを検索" style="width: 160px">
+        <input type="text" class="form-control" name="keyword" placeholder="タグを検索" style="width: 160px">
         <span class="input-group">
             <button type="submit" class="btn-outline-white">
               <i class="fas fa-search"></i>
@@ -17,6 +17,7 @@
         </span>
     </div>
   </form>
+  {{-- 検索機能 --}}
 
   <ul class="navbar-nav ml-auto">
 
