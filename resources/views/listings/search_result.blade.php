@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('title')
-{{ $result }} / Litas
+{{ $keyword }} / Litas
 @stop
 
 
@@ -12,7 +12,7 @@
 <nav class="navbar navbar-expand navbar-light bg-light shadow-none" style="height: 80px">
 
   <h4 class="navbar-text text-dark font-weight-bold my-0 mr-1">
-    {{ $result }}
+    {{ $keyword }}
   </h4>
   <br>
   <p class="ml-4 my-0">
@@ -24,7 +24,7 @@
 <div class="container-fluid">
   <div class="row">
 
-    @foreach($tag->listings as $listing)
+    @foreach($result as $listing)
       @include('listings.list')
     @endforeach
   </div>

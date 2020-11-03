@@ -109,30 +109,21 @@ class ListingsController extends Controller
 
     public function search(Request $request)
     {
-        $list = Listing::whereHas('tags', function($q) use($request){
-            $q->where('name', 'iLIKE', "%$request->keyword%");
-        })->orWhere(function($q) use($request){
-            $q->where('title', 'iLIKE', "%$request->keyword%");
+        $keyword = $request->keyword;
+
+        // リスト名とタグからあいまい検索（大文字小文字無視）
+        $result = Listing::whereHas('tags', function($q) use($keyword){
+            $q->where('name', 'iLIKE', "%$keyword%");
+        })->orWhere(function($q) use($keyword){
+            $q->where('title', 'iLIKE', "%$keyword%");
         })->get();
 
-        dd($list);
-
-        $key = Listing::where('title', 'iLIKE', "%$request->keyword%")
-            ->with('tags')->where('name', 'iLIKE', "%$request->keyword%")->get();
-
-        dd($key);
-
-        // $keyword = Listing::where('title', 'iLIKE', "%$request->keyword%")
-        //     ->with('tags')->where('name', 'iLIKE', "%$request->keyword%")
-        //     // ->select('title', 'name')
-        //     ->get();
-
-        // dd($keyword);
-
-        if ($keyword) {
+        if ($result) {
             return view('listings.search_result')
-                ->with('keyword' ,$keyword);
+                ->with('result', $result)
+                ->with('keyword', $keyword);
         } else {
             return redirect()->route("listings.index");
-        }    }
+        }
+    }
 }
