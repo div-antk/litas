@@ -118,6 +118,11 @@ class ListingsController extends Controller
             $q->where('title', 'iLIKE', "%$keyword%");
         })->get();
 
+        // $result = Listing::where('title', 'iLIKE', "%$keyword%")
+        //     ->Tag::orWhere('name', 'iLIKE', "%$keyword%")->get();
+
+        //     dd($result);
+
         if ($result) {
             return view('listings.search_result')
                 ->with('result', $result)
