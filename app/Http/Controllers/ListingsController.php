@@ -132,7 +132,7 @@ class ListingsController extends Controller
         ->get()->all();
 
 
-        // dd($result);
+        dd(count($result, COUNT_RECURSIVE));
         // $result = Listing::where('title', 'iLIKE', "%$keyword%")
         //     ->Tag::orWhere('name', 'iLIKE', "%$keyword%")->get();
 

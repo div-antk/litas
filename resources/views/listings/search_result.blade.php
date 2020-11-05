@@ -17,7 +17,7 @@
   <br>
   <p class="ml-4 my-0">
     {{-- {{ $result->count() }}件ありました --}}
-    {{ $result->count() }}件ありました
+    {{ count($result, COUNT_RECURSIVE) }}件ありました
   </p>
 
 </nav>
@@ -25,9 +25,9 @@
 <div class="container-fluid">
   <div class="row">
 
-    @foreach($result as $listing)
+    {{-- @foreach($result as $listing)
       @include('listings.list')
-    @endforeach
+    @endforeach --}}
   </div>
 </div>
 @endsection
