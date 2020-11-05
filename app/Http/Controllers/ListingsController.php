@@ -111,12 +111,22 @@ class ListingsController extends Controller
     {
         $keyword = $request->keyword;
 
+        // $a = Listing::has('user')->where('name', 'iLIKE', "%$keyword%")->get();
+        // $result = Listing::whereHas('user', function($q) use($keyword){
+        //     $q->where('name', 'iLIKE', "%$keyword%");
+        // })->get();
+
+
+
         // リスト名とタグからあいまい検索（大文字小文字無視）
         $result = Listing::whereHas('tags', function($q) use($keyword){
+            $q->where('name', 'iLIKE', "%$keyword%");
+        })->whereHas('user', function($q) use($keyword){
             $q->where('name', 'iLIKE', "%$keyword%");
         })->orWhere(function($q) use($keyword){
             $q->where('title', 'iLIKE', "%$keyword%");
         })->get();
+
 
         // $result = Listing::where('title', 'iLIKE', "%$keyword%")
         //     ->Tag::orWhere('name', 'iLIKE', "%$keyword%")->get();
