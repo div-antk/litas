@@ -16,6 +16,7 @@
   </h4>
   <br>
   <p class="ml-4 my-0">
+    {{-- {{ $result->count() }}件ありました --}}
     {{ $result->count() }}件ありました
   </p>
 

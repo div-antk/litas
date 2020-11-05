@@ -116,22 +116,25 @@ class ListingsController extends Controller
         //     $q->where('name', 'iLIKE', "%$keyword%");
         // })->get();
 
+        $result = [];
 
+        $result[] = Listing::join('users', 'listings.user_id', 'users.id')
+        ->where('name', 'iLIKE', "%$keyword%")
+        ->get()->all();
 
         // リスト名とタグからあいまい検索（大文字小文字無視）
-        $result = Listing::whereHas('tags', function($q) use($keyword){
+        $result[] = Listing::whereHas('tags', function($q) use($keyword){
             $q->where('name', 'iLIKE', "%$keyword%");
         })->whereHas('user', function($q) use($keyword){
             $q->where('name', 'iLIKE', "%$keyword%");
-        })->orWhere(function($q) use($keyword){
-            $q->where('title', 'iLIKE', "%$keyword%");
-        })->get();
+        })->join('users', 'listings.user_id', 'users.id')
+        ->where('name', 'iLIKE', "%$keyword%")
+        ->get()->all();
 
 
+        // dd($result);
         // $result = Listing::where('title', 'iLIKE', "%$keyword%")
         //     ->Tag::orWhere('name', 'iLIKE', "%$keyword%")->get();
-
-        //     dd($result);
 
         if ($result) {
             return view('listings.search_result')
