@@ -115,9 +115,17 @@ class ListingsController extends Controller
         $result = [];
 
         // ユーザー名からあいまい検索（大文字小文字無視）
-        $result['user'] = Listing::join('users', 'listings.user_id', 'users.id')
-        ->where('name', 'iLIKE', "%$keyword%")
-        ->get()->all();
+        // $result['user'] = Listing::join('users', 'listings.user_id', 'users.id')
+        // ->where('name', 'iLIKE', "%$keyword%")
+        // ->get()->all();
+
+        $result['list'] = Listing::whereHas('tags', function($q) use($keyword){
+            $q->where('name', 'iLIKE', "%$keyword%");
+        })->orWhere(function($q) use($keyword){
+            $q->where('title', 'iLIKE', "%$keyword%");
+        })->get()->all();
+
+        dd($result);
 
         // リスト名とタグからあいまい検索（大文字小文字無視）
         $result['list'] = Listing::whereHas('tags', function($q) use($keyword){
@@ -129,12 +137,16 @@ class ListingsController extends Controller
         // 孫要素の数をカウント
         $count = count($result, COUNT_RECURSIVE) - count($result);
 
-        dd($result, $count);
+        $listings = array_merge_recursive($result['user'], $result['list']);
+
+        $ll = array_unique($listings);
+        
+        dd($ll->pluck('title'));
 
 
         // ダブったIDを除いてまとめたらカウントしてなんらかの順番で表示させる
 
-        
+
 
 
         // $result = Listing::where('title', 'iLIKE', "%$keyword%")
@@ -144,7 +156,7 @@ class ListingsController extends Controller
 
         if ($result) {
             return view('listings.search_result')
-                ->with('result', $result)
+                ->with('result', $listings)
                 ->with('keyword', $keyword);
         } else {
             return redirect()->route("listings.index");

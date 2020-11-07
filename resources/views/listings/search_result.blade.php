@@ -25,9 +25,9 @@
 <div class="container-fluid">
   <div class="row">
 
-    {{-- @foreach($result as $listing)
+    @foreach($result as $listing)
       @include('listings.list')
-    @endforeach --}}
+    @endforeach
   </div>
 </div>
 @endsection
