@@ -111,30 +111,36 @@ class ListingsController extends Controller
     {
         $keyword = $request->keyword;
 
-        // $a = Listing::has('user')->where('name', 'iLIKE', "%$keyword%")->get();
-        // $result = Listing::whereHas('user', function($q) use($keyword){
-        //     $q->where('name', 'iLIKE', "%$keyword%");
-        // })->get();
 
         $result = [];
 
-        $result[] = Listing::join('users', 'listings.user_id', 'users.id')
+        // ユーザー名からあいまい検索（大文字小文字無視）
+        $result['user'] = Listing::join('users', 'listings.user_id', 'users.id')
         ->where('name', 'iLIKE', "%$keyword%")
         ->get()->all();
 
         // リスト名とタグからあいまい検索（大文字小文字無視）
-        $result[] = Listing::whereHas('tags', function($q) use($keyword){
+        $result['list'] = Listing::whereHas('tags', function($q) use($keyword){
             $q->where('name', 'iLIKE', "%$keyword%");
-        })->whereHas('user', function($q) use($keyword){
-            $q->where('name', 'iLIKE', "%$keyword%");
-        })->join('users', 'listings.user_id', 'users.id')
-        ->where('name', 'iLIKE', "%$keyword%")
-        ->get()->all();
+        })->orWhere(function($q) use($keyword){
+            $q->where('title', 'iLIKE', "%$keyword%");
+        })->get()->all();
+
+        // 孫要素の数をカウント
+        $count = count($result, COUNT_RECURSIVE) - count($result);
+
+        dd($result, $count);
 
 
-        dd(count($result, COUNT_RECURSIVE));
+        // ダブったIDを除いてまとめたらカウントしてなんらかの順番で表示させる
+
+        
+
+
         // $result = Listing::where('title', 'iLIKE', "%$keyword%")
         //     ->Tag::orWhere('name', 'iLIKE', "%$keyword%")->get();
+
+        //     dd($result);
 
         if ($result) {
             return view('listings.search_result')
