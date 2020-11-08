@@ -112,34 +112,36 @@ class ListingsController extends Controller
         $keyword = $request->keyword;
 
 
-        $result = [];
+        $results = [];
 
         // ユーザー名からあいまい検索（大文字小文字無視）
-        $result[] = Listing::join('users', 'listings.user_id', 'users.id')
+        $results[] = Listing::join('users', 'listings.user_id', 'users.id')
             ->where('name', 'iLIKE', "%$keyword%")
             ->select('listings.id')->get()->all();
 
         
-        $result[] = Listing::whereHas('tags', function($q) use($keyword){
+        $results[] = Listing::whereHas('tags', function($q) use($keyword){
             $q->where('name', 'iLIKE', "%$keyword%");
         })->orWhere(function($q) use($keyword){
             $q->where('title', 'iLIKE', "%$keyword%");
         })->select('listings.id')->get()->all();
         
  
-        $listings = array_merge_recursive($result[0], $result[1]);
+        $merge_results = array_merge_recursive($results[0], $results[1]);
+
+
+        dd($merge_results)->all();
+
+        foreach($merge_results as $key => $result) {
+            $listings[$key] = Listing::where('id', $result->id)
+                ->with('user')
+                ->with('likes')
+                ->with('tags')
+                ->get()->all();
+        }
 
 
         dd($listings);
-
-
-        $listings = array_merge_recursive($result['user'], $result['list']);
-
-        $ll = array_unique($listings);
-        
-        dd($ll->pluck('title'));
-
-        dd($result);
 
         // リスト名とタグからあいまい検索（大文字小文字無視）
         $result['list'] = Listing::whereHas('tags', function($q) use($keyword){
