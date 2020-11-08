@@ -115,15 +115,29 @@ class ListingsController extends Controller
         $result = [];
 
         // ユーザー名からあいまい検索（大文字小文字無視）
-        // $result['user'] = Listing::join('users', 'listings.user_id', 'users.id')
-        // ->where('name', 'iLIKE', "%$keyword%")
-        // ->get()->all();
+        $result[] = Listing::join('users', 'listings.user_id', 'users.id')
+            ->where('name', 'iLIKE', "%$keyword%")
+            ->select('listings.id')->get()->all();
 
-        $result['list'] = Listing::whereHas('tags', function($q) use($keyword){
+        
+        $result[] = Listing::whereHas('tags', function($q) use($keyword){
             $q->where('name', 'iLIKE', "%$keyword%");
         })->orWhere(function($q) use($keyword){
             $q->where('title', 'iLIKE', "%$keyword%");
-        })->get()->all();
+        })->select('listings.id')->get()->all();
+        
+ 
+        $listings = array_merge_recursive($result[0], $result[1]);
+
+
+        dd($listings);
+
+
+        $listings = array_merge_recursive($result['user'], $result['list']);
+
+        $ll = array_unique($listings);
+        
+        dd($ll->pluck('title'));
 
         dd($result);
 
@@ -136,12 +150,6 @@ class ListingsController extends Controller
 
         // 孫要素の数をカウント
         $count = count($result, COUNT_RECURSIVE) - count($result);
-
-        $listings = array_merge_recursive($result['user'], $result['list']);
-
-        $ll = array_unique($listings);
-        
-        dd($ll->pluck('title'));
 
 
         // ダブったIDを除いてまとめたらカウントしてなんらかの順番で表示させる
